@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+/* ===================================================
+   ASPK4Hapur Design System — Tailwind v4 Tokens
+   =================================================== */
+
+@theme {
+  /* ─── Colors ─── */
+  --color-primary: #0057FF;
+  --color-primary-dark: #0040CC;
+  --color-primary-light: #3377FF;
+  --color-accent: #00D4FF;
+  --color-accent-dark: #00A8CC;
+  --color-background: #F8FAFC;
+  --color-dark: #0F172A;
+  --color-dark-800: #1E293B;
+  --color-dark-700: #334155;
+  --color-ink: #1a1a2e;
+  --color-muted: #64748B;
+  --color-muted-light: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-surface: #FFFFFF;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-gold: #F59E0B;
+  --color-gold-light: #FEF3C7;
+
+  /* ─── Fonts ─── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* ─── Custom Shadows ─── */
+  --shadow-premium: 0 20px 60px rgba(15, 23, 42, 0.10), 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 0 0 1px rgba(0, 87, 255, 0.12), 0 24px 80px rgba(0, 87, 255, 0.20);
+  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.06), 0 1px 4px rgba(15, 23, 42, 0.04);
+  --shadow-nav: 0 1px 0 rgba(226, 232, 240, 0.8), 0 4px 24px rgba(15, 23, 42, 0.06);
+  --shadow-button: 0 4px 14px rgba(0, 87, 255, 0.35);
+
+  /* ─── Border Radius ─── */
+  --radius-pill: 9999px;
+  --radius-card: 1.25rem;
+  --radius-modal: 1.5rem;
+
+  /* ─── Animations ─── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-drift: drift 18s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 40s linear infinite;
+  --animate-pulse-glow: pulse-glow 2.5s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-bounce-soft: bounce-soft 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-scale-in: scale-in 0.3s ease-out both;
+}
+
+/* ─── Keyframes ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  33% { transform: translate3d(20px, -30px, 0) rotate(8deg); }
+  66% { transform: translate3d(-14px, 22px, 0) rotate(-6deg); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 87, 255, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(0, 87, 255, 0); }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0px); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: translateY(-8px); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+
+/* ─── Custom Utilities ─── */
+@utility glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@utility glass-dark {
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, #0057FF 0%, #00D4FF 60%, #0057FF 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@utility text-gradient-static {
+  background: linear-gradient(135deg, #0057FF 0%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hero-gradient {
+  background: linear-gradient(135deg, #0057FF 0%, #0040CC 40%, #00D4FF 100%);
+}
+
+@utility mesh-bg {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(0, 87, 255, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(0, 87, 255, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #F8FAFC 0%, #EEF4FF 100%);
+}
+
+@utility page-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@utility shimmer-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect as a regular CSS class */
+.shimmer-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  animation: shimmer 2s linear infinite;
+}
+
+@utility card-hover {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-premium);
+}
+
+@utility btn-magnetic {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Global Base Styles ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 87, 255, 0.15);
+  color: var(--color-dark);
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 87, 255, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 87, 255, 0.5);
+}
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Smooth transitions ─── */
+a, button {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* ─── Image optimization ─── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── Container util ─── */
+.container-padded {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container-padded {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padded {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* ─── New Design System Utilities ─── */
+.section-label {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.editorial-heading {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw + 1rem, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.prose-body {
+  font-family: var(--font-sans);
+  color: var(--color-muted);
+  line-height: 1.75;
+  font-size: 1.125rem;
+}
+
+/* ─── Prose overrides ─── */
+.prose h2 {
+  font-family: var(--font-display);
+  color: var(--color-dark);
+}
+
+/* ─── Embla Carousel ─── */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}

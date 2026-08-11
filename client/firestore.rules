@@ -1,0 +1,130 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ──────────────────────────────────────
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getUserRole() in ['admin', 'superadmin'];
+    }
+
+    function isEditor() {
+      return isAuthenticated() && getUserRole() in ['admin', 'superadmin', 'editor'];
+    }
+
+    function isMember() {
+      return isAuthenticated() && getUserRole() in ['admin', 'superadmin', 'editor', 'member'];
+    }
+
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    // ── Users ────────────────────────────────────────────────
+    match /users/{userId} {
+      // Owner can ALWAYS read their own profile (no role check — avoids circular dependency)
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ── Public read collections ───────────────────────────────
+    match /news/{docId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+
+    match /events/{docId} {
+      allow read: if resource.data.published == true || isEditor();
+      allow write: if isEditor();
+    }
+
+    match /gallery/{docId} {
+      allow read: if true;
+      allow write: if isEditor();
+    }
+
+    match /partyMembers/{docId} {
+      allow read: if resource.data.active == true || isEditor();
+      allow write: if isAdmin();
+    }
+
+    match /announcements/{docId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /heroSlides/{docId} {
+      allow read: if resource.data.active == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /testimonials/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /manifesto/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /websiteSettings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── User-submitted data ───────────────────────────────────
+    match /complaints/{docId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.email == request.auth.token.email);
+      allow create: if true; // Anyone can file a complaint
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /donations/{docId} {
+      allow read: if isAdmin();
+      allow create: if true; // Anyone can make a donation
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /memberApplications/{docId} {
+      allow read: if isAdmin();
+      allow create: if true; // Anyone can apply
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /contactMessages/{docId} {
+      allow read: if isAdmin();
+      allow create: if true; // Anyone can send a message
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    match /newsletterSubscribers/{docId} {
+      allow read: if isAdmin();
+      allow create: if true; // Anyone can subscribe
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ── Admin-only ────────────────────────────────────────────
+    match /admins/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /roles/{docId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
