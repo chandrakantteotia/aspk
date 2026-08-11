@@ -7,33 +7,21 @@ import { getCollection, COLLECTIONS, where, orderBy, limit } from '@/firebase/fi
 import { firebaseServicesEnabled } from '@/firebase/config';
 import type { NewsArticle } from '@/types';
 import { formatDate, truncate } from '@/lib/utils';
+import gallery1 from '@/images/gallery-1.jpg';
+import gallery2 from '@/images/gallery-2.jpg';
+import gallery3 from '@/images/gallery-3.jpg';
+import gallery4 from '@/images/gallery-4.jpg';
 
 const fallbackNews: NewsArticle[] = [
   {
     id: '1',
-    title: 'New district outreach model announced for village-first governance',
-    slug: 'new-district-outreach-model',
-    category: 'Press Release',
-    date: { toDate: () => new Date('2026-08-09') } as any,
-    summary: 'ASPK4Hapur introduced a field-led program to improve local issue resolution, public feedback, and transparent reporting across all districts.',
-    content: '',
-    imageUrl: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80',
-    author: 'ASPK4Hapur',
-    published: true,
-    featured: true,
-    tags: ['governance', 'outreach'],
-    createdAt: {} as any,
-    updatedAt: {} as any,
-  },
-  {
-    id: '2',
     title: 'Youth leadership summit to be held across state this month',
     slug: 'youth-leadership-summit',
     category: 'Announcement',
     date: { toDate: () => new Date('2026-08-06') } as any,
     summary: 'A state-wide leadership summit will bring together youth wing delegates, entrepreneurs, and educators to shape the future agenda.',
     content: '',
-    imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',
+    imageUrl: gallery1,
     author: 'ASPK4Hapur',
     published: true,
     featured: false,
@@ -42,14 +30,14 @@ const fallbackNews: NewsArticle[] = [
     updatedAt: {} as any,
   },
   {
-    id: '3',
+    id: '2',
     title: 'Volunteer service drive expands healthcare support in rural clusters',
     slug: 'volunteer-healthcare-drive',
     category: 'News',
     date: { toDate: () => new Date('2026-08-02') } as any,
     summary: 'Field teams are coordinating blood donation camps, medical screenings, and patient transport assistance in underserved areas.',
     content: '',
-    imageUrl: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80',
+    imageUrl: gallery2,
     author: 'ASPK4Hapur',
     published: true,
     featured: false,
@@ -58,18 +46,34 @@ const fallbackNews: NewsArticle[] = [
     updatedAt: {} as any,
   },
   {
-    id: '4',
+    id: '3',
     title: 'Clean Hapur Initiative launched with massive community participation',
     slug: 'clean-hapur-initiative',
     category: 'Event',
     date: { toDate: () => new Date('2026-07-28') } as any,
     summary: 'Thousands of citizens joined hands for the cleanliness drive across major wards in the city.',
     content: '',
-    imageUrl: 'https://images.unsplash.com/photo-1594709848419-f55db11499cc?auto=format&fit=crop&w=900&q=80',
+    imageUrl: gallery3,
     author: 'ASPK4Hapur',
     published: true,
     featured: false,
     tags: ['environment', 'community'],
+    createdAt: {} as any,
+    updatedAt: {} as any,
+  },
+  {
+    id: '4',
+    title: 'New district outreach model announced for village-first governance',
+    slug: 'new-district-outreach-model',
+    category: 'Press Release',
+    date: { toDate: () => new Date('2026-08-09') } as any,
+    summary: 'ASPK4Hapur introduced a field-led program to improve local issue resolution, public feedback, and transparent reporting across all districts.',
+    content: '',
+    imageUrl: gallery4,
+    author: 'ASPK4Hapur',
+    published: true,
+    featured: true,
+    tags: ['governance', 'outreach'],
     createdAt: {} as any,
     updatedAt: {} as any,
   },
@@ -174,14 +178,13 @@ export default function NewsSection() {
   const news = remoteDataEnabled ? (query.data ?? fallbackNews) : fallbackNews;
   const isLoading = remoteDataEnabled ? query.isLoading : false;
 
-  const featured = news[0];
-  const rest = news.slice(1, 4);
+  const displayNews = news.slice(0, 3);
 
   return (
-    <section className="py-32 bg-white" aria-labelledby="news-heading">
+    <section className="py-16 sm:py-24 md:py-32 bg-white" aria-labelledby="news-heading">
       <div className="container-padded">
         
-        <div className="mb-16">
+        <div className="mb-8 sm:mb-12 md:mb-16">
           <span className="section-label block mb-4">Latest Updates</span>
           <h2 id="news-heading" className="editorial-heading">
             News & <span className="font-serif italic text-primary">Announcements</span>
@@ -197,10 +200,8 @@ export default function NewsSection() {
           </div>
         ) : (
           <>
-            {featured && <FeaturedNewsCard article={featured} />}
-            
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {rest.map((article, i) => (
+              {displayNews.map((article, i) => (
                 <SmallNewsCard key={article.id} article={article} index={i} />
               ))}
             </div>

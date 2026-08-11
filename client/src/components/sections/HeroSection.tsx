@@ -5,201 +5,139 @@ import { ChevronDown } from 'lucide-react';
 import { useInView } from '@/hooks/useScroll';
 import { useCountUp } from '@/hooks/useCountUp';
 
-import heroDesktop from '@/images/hero-desktop.jpg';
-import heroMobile from '@/images/hero-mobile.jpg';
+import heroDesktop from '@/images/herodesktop.png';
+import heroPhone from '@/images/herophone.png';
+import heroJoin from '@/images/herojoin.png';
 
 /* ─── Cycling headline words ─── */
 const CYCLING_WORDS = [
-  { text: 'People',    color: 'text-white' },
-  { text: 'Progress',  color: 'text-yellow-300' },
-  { text: 'Change',    color: 'text-orange-300' },
-  { text: 'Justice',   color: 'text-purple-300' },
-  { text: 'Hapur',     color: 'text-blue-300' },
+  { text: 'People', color: 'text-white' },
+  { text: 'Progress', color: 'text-yellow-300' },
+  { text: 'Change', color: 'text-orange-300' },
+  { text: 'Justice', color: 'text-purple-300' },
+  { text: 'Hapur', color: 'text-blue-300' },
   { text: 'Community', color: 'text-green-300' },
 ];
 
-/* ─── Stat card ─── */
-function StatCard({ value, label, suffix = '', delay }: {
-  value: number; label: string; suffix?: string; delay: number;
-}) {
-  const { ref, inView } = useInView(0.4);
-  const count = useCountUp(value, 2000, 0, inView);
+import gallery1 from '@/images/gallery-1.jpg';
+import gallery2 from '@/images/gallery-2.jpg';
+import gallery3 from '@/images/gallery-3.jpg';
+import gallery4 from '@/images/gallery-4.jpg';
+
+const GALLERY_IMAGES = [
+  { src: gallery1, title: 'Public Rally & Ground Work' },
+  { src: gallery2, title: 'Community Outreach' },
+  { src: gallery3, title: 'Youth Empowerment' },
+  { src: gallery4, title: 'Hapur Development Meeting' },
+];
+
+/* ─── Hero Horizontal Image Slider ─── */
+function HeroImageSlider({ reverse = false }: { reverse?: boolean }) {
   return (
-    <motion.div
-      ref={ref as React.RefObject<HTMLDivElement>}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="bg-white/15 backdrop-blur-md p-6 rounded-2xl border border-white/25 w-full md:w-auto min-w-[180px]"
-    >
-      <div className="font-display font-bold text-3xl text-white mb-1">
-        {count.toLocaleString('en-IN')}{suffix}
-      </div>
-      <div className="text-sm text-white/70 font-medium">{label}</div>
-    </motion.div>
+    <div className="w-full max-w-xl sm:max-w-2xl overflow-hidden py-1">
+      <motion.div
+        animate={{ x: reverse ? ['-50%', '0%'] : ['0%', '-50%'] }}
+        transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
+        className="flex items-center gap-3.5 w-max"
+      >
+        {[...GALLERY_IMAGES, ...GALLERY_IMAGES, ...GALLERY_IMAGES].map((img, idx) => (
+          <div
+            key={idx}
+            className="group relative w-44 sm:w-52 md:w-60 h-28 sm:h-34 md:h-38 rounded-xl overflow-hidden border-2 border-white/25 shadow-xl shrink-0 cursor-pointer"
+          >
+            <img
+              src={img.src}
+              alt={img.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2.5">
+              <span className="text-xs font-semibold text-white line-clamp-1">{img.title}</span>
+            </div>
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 }
 
 /* ─── Main hero ─── */
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const heroY       = useTransform(scrollYProgress, [0, 0.8], [0, 80]);
-
-  const [wordIdx, setWordIdx] = useState(0);
-
-  /* Auto-cycle words (slightly offset from bg) */
-  useEffect(() => {
-    const id = setInterval(() => setWordIdx(i => (i + 1) % CYCLING_WORDS.length), 2600);
-    return () => clearInterval(id);
-  }, []);
-
-  const cw = CYCLING_WORDS[wordIdx];
-
   return (
     <section
-      ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative w-full overflow-hidden"
       aria-label="Hero section"
     >
-      {/* ── Responsive Background Image ── */}
-      <div className="absolute inset-0">
+      {/* ── Background Image establishing natural section height ── */}
+      <div className="relative w-full">
         <picture>
-          <source media="(max-width: 768px)" srcSet={heroMobile} />
+          <source media="(max-width: 768px)" srcSet={heroPhone} />
           <motion.img
             src={heroDesktop}
             alt="ASPK4Hapur Hero Background"
             aria-hidden="true"
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.03 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-auto min-h-[520px] sm:min-h-[600px] lg:min-h-[700px] object-cover block"
           />
         </picture>
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/30" />
+        {/* Dark gradient overlay tuned for right-side text readability */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/65 to-black/20 pointer-events-none" />
         {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
-      </div>
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
 
-      {/* ── Content ── */}
-      <motion.div
-        style={{ opacity: heroOpacity, y: heroY }}
-        className="relative z-10 container-padded pt-32 pb-24 flex-1 flex flex-col justify-center"
-      >
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+        {/* ── Content Overlay (Right-aligned) ── */}
+        <div className="absolute inset-0 z-10 container-padded pt-24 sm:pt-36 pb-8 sm:pb-12 flex flex-col justify-center items-end text-right">
+          <div className="max-w-2xl flex flex-col items-end text-right ml-auto">
 
-          {/* Left content */}
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--color-gold)] mb-5 inline-block">
-                Official Platform 2026
-              </span>
-            </motion.div>
+            {/* Single Photo Animation Slider */}
+            <div className="mb-4 sm:mb-5 w-full flex justify-end">
+              <HeroImageSlider />
+            </div>
 
-            {/* Animated headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 2.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-6"
-            >
-              {/* Cycling word line */}
-              <span className="flex flex-wrap items-baseline gap-x-3 overflow-hidden">
-                <span className="relative inline-block overflow-hidden font-bold" style={{ minWidth: '2ch' }}>
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.span
-                      key={wordIdx}
-                      initial={{ y: '110%', opacity: 0 }}
-                      animate={{ y: '0%', opacity: 1 }}
-                      exit={{ y: '-110%', opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className={`block ${cw.color}`}
-                    >
-                      {cw.text}
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-                <span className="text-white font-bold">First.</span>
-              </span>
-
-              {/* Static second line with Serif touch */}
-              <span className="block mt-1 sm:mt-2">
-                <span className="font-serif italic text-[var(--color-gold-light)] font-normal">Hapur</span>
-                <span className="font-bold text-white"> First.</span>
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 3.0, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="text-white/70 text-lg leading-relaxed mb-10 max-w-lg font-medium"
-            >
+            {/* Paragraph Text */}
+            <p className="text-white/85 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-right">
               Building a new era of transparent governance, community service, and true
               representation. Join the movement that listens to every citizen.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 3.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="flex flex-wrap items-center gap-4"
-            >
+            {/* CTA Buttons right-aligned */}
+            <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4 mb-4">
               <Link
                 to="/join"
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-[var(--color-gold)] to-yellow-600 text-[#0F172A] font-bold hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:-translate-y-0.5 transition-all"
+                className="px-8 py-3.5 sm:px-9 sm:py-4 rounded-none border-2 border-white bg-[#0004A3] text-white font-bold hover:bg-white hover:text-[#0004A3] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm sm:text-base shadow-md"
               >
-                Join the Movement
+                Join
               </Link>
               <Link
-                to="/manifesto"
-                className="px-8 py-4 rounded-full bg-white/5 text-white font-semibold border border-white/20 hover:bg-white/10 hover:-translate-y-0.5 backdrop-blur-md transition-all"
+                to="/donate"
+                className="px-8 py-3.5 sm:px-9 sm:py-4 rounded-none border-2 border-white bg-white text-[#0004A3] font-bold hover:bg-[#0004A3] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm sm:text-base shadow-md"
               >
-                Our Manifesto
+                Donate
               </Link>
-            </motion.div>
-          </div>
-
-          {/* Right: Stat cards */}
-          <div className="relative h-auto md:h-[380px] lg:h-[460px] mt-12 md:mt-0 flex items-center justify-center lg:justify-end">
-            <div className="w-full flex flex-col md:block relative max-w-sm gap-4">
-              <div className="md:absolute top-0 right-0 lg:right-6 z-30">
-                <StatCard value={14250} label="Active Members"      suffix="+" delay={3.4} />
-              </div>
-              <div className="md:absolute top-[38%] left-0 z-20">
-                <StatCard value={8900}  label="Grievances Resolved" suffix="+" delay={3.6} />
-              </div>
-              <div className="md:absolute bottom-0 right-6 lg:right-14 z-10">
-                <StatCard value={28}    label="Districts Covered"   suffix="+" delay={3.8} />
-              </div>
             </div>
+
           </div>
-
         </div>
-      </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 4.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
-      >
-        <span className="text-[10px] text-white/50 font-bold uppercase tracking-[0.2em]">Scroll</span>
+        {/* Scroll indicator */}
         <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.0, duration: 1 }}
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-20 pointer-events-none"
         >
-          <ChevronDown className="w-4 h-4 text-white/50" />
+          <span className="text-[10px] text-white/50 font-bold uppercase tracking-[0.2em]">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          >
+            <ChevronDown className="w-4 h-4 text-white/50" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   );
 }

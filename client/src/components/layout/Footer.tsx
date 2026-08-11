@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Facebook, Twitter, Instagram, Youtube, Linkedin,
-  Mail, Phone, MapPin, ArrowRight
+  Mail, Phone, MapPin
 } from 'lucide-react';
+import partyLogo from '@/images/logo.png';
+import footerLogo from '@/images/footerlogo.png';
 
 const footerLinks = {
   party: [
@@ -39,24 +41,23 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white" role="contentinfo">
-      <div className="container-padded py-20">
+    <footer className="bg-[#f3f4f6] text-slate-800 border-t border-slate-200/80" role="contentinfo">
+      <div className="container-padded py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
-          
+
           {/* ── Brand Column ── */}
           <div className="lg:col-span-5 pr-0 lg:pr-12">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <span className="text-2xl">🏛️</span>
-              <div className="font-display font-bold text-2xl tracking-tight">
-                <span className="text-white">ASPK</span>
-                <span className="font-serif italic text-white/70 ml-1">4Hapur</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-6">
+              <img src={footerLogo} alt="ASPK4Hapur Logo" className="h-9 sm:h-11 w-11 object-contain shrink-0" />
+              <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-[#0004A3]">
+                ASPK<span className="text-slate-800 font-serif italic ml-0.5">4HAPUR</span>
+              </span>
             </Link>
-            <p className="font-serif italic text-[var(--color-gold)] text-lg mb-8">
-              A people-first political movement committed to transparent governance and building a prosperous Hapur.
+            <p className="font-serif italic text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
+              A people-first political movement committed to transparent governance, social justice, and building a prosperous Hapur.
             </p>
-            
-            <div className="flex items-center gap-3 mb-10">
+
+            <div className="flex items-center gap-3 mb-8">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -64,24 +65,24 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#0004A3] hover:text-white hover:border-[#0004A3] transition-colors shadow-sm"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
 
-            <div className="space-y-4">
-              <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-[15px] text-white/60 hover:text-[var(--color-gold)] transition-colors">
-                <Phone className="w-4 h-4" />
+            <div className="space-y-3">
+              <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[#0004A3] transition-colors font-medium">
+                <Phone className="w-4 h-4 text-[#0004A3]" />
                 +91 XXXX-XXX-XXX
               </a>
-              <a href="mailto:contact@aspk4hapur.in" className="flex items-center gap-3 text-[15px] text-white/60 hover:text-[var(--color-gold)] transition-colors">
-                <Mail className="w-4 h-4" />
+              <a href="mailto:contact@aspk4hapur.in" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[#0004A3] transition-colors font-medium">
+                <Mail className="w-4 h-4 text-[#0004A3]" />
                 contact@aspk4hapur.in
               </a>
-              <div className="flex items-center gap-3 text-[15px] text-white/60">
-                <MapPin className="w-4 h-4" />
+              <div className="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                <MapPin className="w-4 h-4 text-[#0004A3]" />
                 Hapur, Uttar Pradesh, India
               </div>
             </div>
@@ -89,37 +90,37 @@ export default function Footer() {
 
           {/* ── Quick Links ── */}
           <div className="lg:col-span-2">
-            <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-widest mb-6">The Party</h4>
-            <ul className="space-y-4">
+            <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-6">The Party</h4>
+            <ul className="space-y-3.5">
               {footerLinks.party.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-[15px] text-white/60 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          
+
           <div className="lg:col-span-2">
-            <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-widest mb-6">Get Involved</h4>
-            <ul className="space-y-4">
+            <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-6">Get Involved</h4>
+            <ul className="space-y-3.5">
               {footerLinks.engage.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-[15px] text-white/60 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          
+
           <div className="lg:col-span-3">
-            <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-widest mb-6">Resources</h4>
-            <ul className="space-y-4">
+            <h4 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-6">Resources</h4>
+            <ul className="space-y-3.5">
               {footerLinks.resources.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-[15px] text-white/60 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -131,20 +132,20 @@ export default function Footer() {
       </div>
 
       <div className="container-padded">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[var(--color-gold)]/30 to-transparent" />
+        <div className="h-[1px] w-full bg-slate-200" />
       </div>
 
       {/* ── Bottom Bar ── */}
-      <div className="container-padded py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[14px] text-white/40 text-center md:text-left">
+      <div className="container-padded py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p className="text-xs font-medium text-slate-500 text-center md:text-left">
           © {new Date().getFullYear()} ASPK4Hapur. All rights reserved.
         </p>
-        <p className="text-[14px] text-white/40 text-center">
+        <p className="text-xs font-medium text-slate-500 text-center">
           Made with ❤️ for the people of Hapur
         </p>
         <div className="flex items-center gap-6">
-          <Link to="#" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">Privacy</Link>
-          <Link to="#" className="text-[14px] text-white/40 hover:text-white/80 transition-colors">Terms</Link>
+          <Link to="#" className="text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors">Privacy Policy</Link>
+          <Link to="#" className="text-xs font-medium text-slate-500 hover:text-slate-900 transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>

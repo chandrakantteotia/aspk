@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logoImg from '@/images/logo.png';
+import footerLogo from '@/images/footerlogo.png';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -14,17 +15,17 @@ import toast from 'react-hot-toast';
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher';
 
 const navLinks = [
-  { label: 'Home',      path: '/',             icon: Home },
-  { label: 'About',     path: '/about',         icon: Info },
-  { label: 'Manifesto', path: '/manifesto',     icon: FileText },
-  { label: 'Members',   path: '/party-members', icon: Users },
-  { label: 'Gallery',   path: '/gallery',       icon: Image },
+  { label: 'Home', path: '/', icon: Home },
+  { label: 'About', path: '/about', icon: Info },
+  { label: 'Manifesto', path: '/manifesto', icon: FileText },
+  { label: 'Members', path: '/party-members', icon: Users },
+  { label: 'Gallery', path: '/gallery', icon: Image },
   {
     label: 'News & Events',
     icon: Newspaper,
     children: [
-      { label: 'Latest News',      path: '/news',   icon: Newspaper, description: 'Party updates and press releases' },
-      { label: 'Upcoming Events',  path: '/events', icon: Calendar, description: 'Rallies, meetups and campaigns' },
+      { label: 'Latest News', path: '/news', icon: Newspaper, description: 'Party updates and press releases' },
+      { label: 'Upcoming Events', path: '/events', icon: Calendar, description: 'Rallies, meetups and campaigns' },
     ],
   },
   {
@@ -32,21 +33,32 @@ const navLinks = [
     icon: UserPlus,
     children: [
       { label: 'File a Complaint', path: '/complaints', icon: MessageSquare, description: 'Submit your grievance online' },
-      { label: 'Join the Party',   path: '/join',        icon: UserPlus, description: 'Become an ASPK4Hapur member' },
-      { label: 'Donate',           path: '/donate',      icon: Heart, description: 'Support the movement financially' },
-      { label: 'Contact Us',       path: '/contact',     icon: Phone, description: 'Get in touch with our team' },
-      { label: 'FAQ',              path: '/faq',         icon: HelpCircle, description: 'Frequently asked questions' },
+      { label: 'Join the Party', path: '/join', icon: UserPlus, description: 'Become an ASPK4Hapur member' },
+      { label: 'Donate', path: '/donate', icon: Heart, description: 'Support the movement financially' },
+      { label: 'Contact Us', path: '/contact', icon: Phone, description: 'Get in touch with our team' },
+      { label: 'FAQ', path: '/faq', icon: HelpCircle, description: 'Frequently asked questions' },
     ],
   },
 ];
 
 export default function Navbar() {
   const { user, isAdmin } = useAuth();
-  const [mobileOpen, setMobileOpen]         = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [userMenuOpen, setUserMenuOpen]     = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  // Track scroll position for transparent to solid header background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Close menus on route change
   useEffect(() => {
@@ -86,9 +98,59 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <header
+      className={cn(
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        scrolled
+          ? "bg-[#0004A3] shadow-lg border-b border-blue-900/40"
+          : "bg-gradient-to-b from-black/75 via-black/40 to-transparent"
+      )}
+    >
+      {/* ── Top Utility Header ── */}
+      <div
+        className={cn(
+          "text-white text-xs py-1.5 transition-colors duration-300",
+          scrolled ? "bg-[#0004A3]" : "bg-transparent"
+        )}
+      >
+        <div className="container-padded flex items-center justify-end gap-3 sm:gap-5 text-[12px] sm:text-[12.5px] font-medium">
+          <Link
+            to="/contact"
+            className="hidden sm:flex items-center gap-1.5 text-white/90 hover:text-white transition-colors"
+          >
+            <Phone className="w-3.5 h-3.5 text-white" />
+            <span>Contact Us</span>
+          </Link>
+
+          <Link
+            to="/manifesto"
+            className="hidden sm:flex items-center gap-1.5 text-white/90 hover:text-white transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5 text-white" />
+            <span>Party Manifesto</span>
+          </Link>
+
+          <Link
+            to="/donate"
+            className="flex items-center gap-1 bg-white hover:bg-white/90 text-[#0004A3] font-bold px-3 py-1 rounded-full text-[11.5px] transition-all shadow-sm"
+          >
+            <Heart className="w-3.5 h-3.5 fill-[#0004A3] text-[#0004A3]" />
+            <span>Donate Now</span>
+          </Link>
+
+          {/* Language Switcher in top header section after Donate button */}
+          <div className="pl-1 border-l border-white/20">
+            <LanguageSwitcher compact variant="dark" />
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main Navigation Header ── */}
       <nav
-        className="fixed top-0 inset-x-0 z-50 bg-white border-b border-slate-100 py-3"
+        className={cn(
+          "text-white py-2.5 transition-colors duration-300",
+          scrolled ? "bg-[#0004A3]" : "bg-transparent"
+        )}
         role="navigation"
         aria-label="Main navigation"
       >
@@ -96,13 +158,24 @@ export default function Navbar() {
           <div className="flex items-center justify-between" ref={dropdownRef}>
 
             {/* ── Logo ── */}
-            <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label="ASPK4Hapur Home">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0 shadow-sm">
-                <span className="text-white text-xs font-black font-display tracking-tight">A4</span>
-              </div>
-              <div className="leading-none">
-                <span className="font-display font-bold text-[17px] tracking-tight text-slate-900">ASPK</span>
-                <span className="font-display text-[17px] tracking-tight text-primary">4Hapur</span>
+            <Link to="/" className="relative flex items-center shrink-0 group py-1" aria-label="ASPK4Hapur Home">
+              {/* Desktop Logo (Original logo.png) */}
+              <img
+                src={logoImg}
+                alt="ASPK4Hapur Desktop Logo"
+                style={{ height: '78px', width: 'auto', maxHeight: '85px' }}
+                className="hidden sm:block object-contain shrink-0 -mt-8 sm:-mt-9 filter drop-shadow-lg transition-transform duration-200 group-hover:scale-105"
+              />
+              {/* Phone / Mobile View Logo (footerlogo.png + ASPK4HAPUR Text) */}
+              <div className="flex items-center gap-2 sm:hidden">
+                <img
+                  src={footerLogo}
+                  alt="ASPK4Hapur Mobile Logo"
+                  className="h-8 w-auto max-h-9 object-contain shrink-0 filter drop-shadow-md"
+                />
+                <span className="font-display font-black text-lg tracking-tight text-white drop-shadow-sm">
+                  ASPK<span className="text-yellow-300 font-serif italic ml-0.5">4HAPUR</span>
+                </span>
               </div>
             </Link>
 
@@ -112,17 +185,22 @@ export default function Navbar() {
                 if (link.children) {
                   const isOpen = activeDropdown === link.label;
                   return (
-                    <div key={link.label} className="relative">
+                    <div
+                      key={link.label}
+                      className="relative"
+                      onMouseEnter={() => setActiveDropdown(link.label)}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
                       <button
                         onClick={() => setActiveDropdown(isOpen ? null : link.label)}
                         className={cn(
                           'flex items-center gap-1 px-3.5 py-2 rounded-lg text-[14px] font-medium transition-colors duration-200',
-                          isOpen ? 'text-primary bg-primary/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                          isOpen ? 'text-white bg-white/20 font-semibold' : 'text-white/90 hover:text-white hover:bg-white/10'
                         )}
                       >
                         {link.label}
                         <ChevronDown className={cn(
-                          'w-3.5 h-3.5 transition-transform duration-200 opacity-60',
+                          'w-3.5 h-3.5 transition-transform duration-200 text-white/80',
                           isOpen && 'rotate-180'
                         )} />
                       </button>
@@ -130,48 +208,42 @@ export default function Navbar() {
                       <AnimatePresence>
                         {isOpen && (
                           <motion.div
-                            initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                            initial={{ opacity: 0, y: 6, scale: 0.98 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.97 }}
-                            transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                            exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                            transition={{ duration: 0.15, ease: 'easeOut' }}
                             className={cn(
-                              "absolute top-full left-0 mt-3 bg-white rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-slate-100/80 z-50",
-                              link.label === 'Citizens' ? "w-[420px]" : "w-72"
+                              "absolute top-full mt-2.5 bg-white/95 backdrop-blur-xl text-slate-900 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden",
+                              link.label === 'Citizens' ? "right-0 w-[300px] sm:w-[330px]" : "left-0 w-60"
                             )}
                           >
-                            {/* Caret */}
-                            <div className="absolute -top-1.5 left-6 w-3 h-3 bg-primary rotate-45 rounded-sm" />
-                            
-                            {/* Header Strip */}
-                            <div className="h-1 w-full bg-primary rounded-t-xl relative z-10" />
+                            {/* Top Accent Strip */}
+                            <div className="h-0.5 w-full bg-[#0004A3]" />
 
-                            <div className={cn(
-                              "p-2",
-                              link.label === 'Citizens' ? "grid grid-cols-2 gap-1" : "flex flex-col gap-1"
-                            )}>
-                              {link.children.map((child, idx) => (
+                            <div className="p-1.5 flex flex-col gap-0.5">
+                              {link.children.map((child) => (
                                 <Link
                                   key={child.path}
                                   to={child.path}
-                                  className="group flex items-start gap-3 px-4 py-3 rounded-lg hover:bg-slate-50 transition-colors"
+                                  className="group flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-blue-50/70 transition-all duration-150"
                                 >
-                                  <div className="w-8 h-8 rounded-md bg-primary/8 flex items-center justify-center shrink-0">
-                                    <child.icon className="w-4 h-4 text-primary" />
+                                  <div className="w-7 h-7 rounded-md bg-[#0004A3]/10 flex items-center justify-center shrink-0 group-hover:bg-[#0004A3] transition-colors">
+                                    <child.icon className="w-3.5 h-3.5 text-[#0004A3] group-hover:text-white transition-colors" />
                                   </div>
-                                  <div className="flex flex-col mt-0.5">
-                                    <span className="text-[13.5px] font-semibold text-slate-800 leading-none mb-1.5">{child.label}</span>
-                                    <span className="text-[11.5px] text-slate-400 leading-tight">{child.description}</span>
+                                  <div className="flex flex-col min-w-0">
+                                    <span className="text-[13px] font-semibold text-slate-800 leading-tight group-hover:text-[#0004A3] transition-colors">{child.label}</span>
+                                    <span className="text-[10.5px] text-slate-400 truncate leading-tight mt-0.5">{child.description}</span>
                                   </div>
                                 </Link>
                               ))}
                             </div>
 
-                            <div className="border-t border-slate-100 bg-slate-50/50 px-5 py-3 rounded-b-xl">
-                              <Link 
-                                to={link.label === 'Citizens' ? '/join' : '/news'} 
-                                className="text-[12px] font-medium text-primary hover:text-primary/80 flex items-center gap-1 w-fit"
+                            <div className="border-t border-slate-100 bg-slate-50/70 px-3.5 py-2 flex items-center justify-between">
+                              <Link
+                                to={link.label === 'Citizens' ? '/join' : '/news'}
+                                className="text-[11.5px] font-bold text-[#0004A3] hover:underline flex items-center gap-1"
                               >
-                                Explore all <span aria-hidden="true">&rarr;</span>
+                                View all <span aria-hidden="true">&rarr;</span>
                               </Link>
                             </div>
                           </motion.div>
@@ -186,8 +258,8 @@ export default function Navbar() {
                     key={link.path}
                     to={link.path!}
                     className={({ isActive }) => cn(
-                      'relative flex items-center px-3.5 py-2 rounded-lg text-[14px] font-medium transition-colors duration-200',
-                      isActive ? 'text-primary bg-primary/5' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                      'relative flex items-center px-3.5 py-2 rounded-lg text-[14px] font-medium transition-colors duration-200 text-white/90 hover:text-white hover:bg-white/10',
+                      isActive && 'text-white bg-white/20 font-semibold'
                     )}
                   >
                     {({ isActive }) => (
@@ -196,7 +268,7 @@ export default function Navbar() {
                         {isActive && (
                           <motion.span
                             layoutId="nav-dot"
-                            className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                            className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-yellow-300"
                           />
                         )}
                       </>
@@ -209,20 +281,18 @@ export default function Navbar() {
             {/* ── Right Actions ── */}
             <div className="flex items-center gap-1">
 
-              {/* Language Switcher */}
-              <div className="hidden sm:block px-1">
-                <LanguageSwitcher compact />
-              </div>
 
-              {/* Divider */}
-              <div className="hidden lg:block w-px h-5 mx-2 bg-slate-200" />
 
               {/* User area */}
               {user ? (
-                <div className="relative">
+                <div
+                  className="relative"
+                  onMouseEnter={() => setUserMenuOpen(true)}
+                  onMouseLeave={() => setUserMenuOpen(false)}
+                >
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full hover:bg-slate-100 transition-all duration-200"
+                    className="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full hover:bg-white/10 transition-all duration-200 text-white"
                     aria-label="User menu"
                   >
                     {user.photoURL ? (
@@ -232,12 +302,12 @@ export default function Navbar() {
                         alt={user.displayName ?? ''}
                       />
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-white text-[11px] font-bold">
+                      <div className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center text-[11px] font-bold">
                         {(user.displayName?.[0] ?? user.email?.[0] ?? 'U').toUpperCase()}
                       </div>
                     )}
                     <ChevronDown className={cn(
-                      'w-3 h-3 text-slate-400 transition-transform duration-200',
+                      'w-3 h-3 text-white/80 transition-transform duration-200',
                       userMenuOpen && 'rotate-180'
                     )} />
                   </button>
@@ -245,34 +315,31 @@ export default function Navbar() {
                   <AnimatePresence>
                     {userMenuOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                        initial={{ opacity: 0, y: 6, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.97 }}
-                        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                        className="absolute right-0 top-full mt-3 w-64 bg-white rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-slate-100/80 z-50"
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.15, ease: 'easeOut' }}
+                        className="absolute right-0 top-full mt-2.5 w-56 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden"
                       >
-                        {/* Caret */}
-                        <div className="absolute -top-1.5 right-4 w-3 h-3 bg-primary rotate-45 rounded-sm" />
-                        
-                        {/* Header Strip */}
-                        <div className="h-1 w-full bg-primary rounded-t-xl relative z-10" />
+                        {/* Top Accent Strip */}
+                        <div className="h-0.5 w-full bg-[#0004A3]" />
 
                         {/* User info */}
-                        <div className="px-4 pt-4 pb-3 border-b border-slate-100 flex items-center gap-3">
+                        <div className="px-3.5 pt-3 pb-2.5 border-b border-slate-100 flex items-center gap-2.5">
                           {user.photoURL ? (
                             <img
                               src={user.photoURL}
-                              className="w-10 h-10 rounded-full object-cover shadow-sm shrink-0"
+                              className="w-8 h-8 rounded-full object-cover shadow-sm shrink-0"
                               alt={user.displayName ?? ''}
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white text-[14px] font-bold shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-[#0004A3] flex items-center justify-center text-white text-[12px] font-bold shrink-0">
                               {(user.displayName?.[0] ?? user.email?.[0] ?? 'U').toUpperCase()}
                             </div>
                           )}
                           <div className="flex flex-col min-w-0">
-                            <p className="text-[13.5px] font-bold text-slate-900 truncate leading-none mb-1">{user.displayName ?? 'User'}</p>
-                            <p className="text-[11.5px] text-slate-500 truncate leading-none">{user.email}</p>
+                            <p className="text-[13px] font-bold text-slate-900 truncate leading-tight">{user.displayName ?? 'User'}</p>
+                            <p className="text-[10.5px] text-slate-400 truncate leading-tight">{user.email}</p>
                           </div>
                         </div>
 
@@ -291,7 +358,7 @@ export default function Navbar() {
                               </div>
                             </Link>
                           )}
-                          
+
                           <button
                             onClick={handleSignOut}
                             className="group flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-red-50 transition-colors text-left w-full"
@@ -312,9 +379,9 @@ export default function Navbar() {
               ) : (
                 <Link
                   to="/login"
-                  className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-lg text-[13.5px] font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-lg text-[13.5px] font-medium text-white/90 hover:text-white hover:bg-white/10 transition-colors"
                 >
-                  <UserCircle className="w-4 h-4" />
+                  <UserCircle className="w-4 h-4 text-white" />
                   Sign in
                 </Link>
               )}
@@ -322,7 +389,7 @@ export default function Navbar() {
               {/* Join CTA */}
               <Link
                 to="/join"
-                className="hidden sm:flex items-center px-4 py-2 rounded-full text-[13.5px] font-semibold bg-primary text-white hover:bg-primary/90 shadow-[0_2px_12px_rgba(0,87,255,0.3)] transition-all ml-1"
+                className="hidden sm:flex items-center px-4 py-2 rounded-full text-[13.5px] font-bold bg-white text-[#0004A3] hover:bg-white/90 shadow-md transition-all ml-1"
               >
                 Join Us
               </Link>
@@ -330,7 +397,7 @@ export default function Navbar() {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg ml-1 text-slate-700 hover:bg-slate-100 transition-colors"
+                className="lg:hidden flex items-center justify-center w-9 h-9 rounded-lg ml-1 text-white hover:bg-white/10 transition-colors"
                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -371,16 +438,17 @@ export default function Navbar() {
               className="fixed right-0 top-0 bottom-0 z-50 w-full bg-white lg:hidden flex flex-col shadow-2xl"
             >
               {/* Drawer header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 shrink-0">
-                <Link to="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                  <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center shrink-0">
-                    <span className="text-white text-[11px] font-black font-display">A4</span>
-                  </div>
-                  <span className="font-display font-bold text-[16px] text-slate-900">ASPK4Hapur</span>
+              <div className="flex items-center justify-between px-5 py-4 bg-[#0004A3] text-white border-b border-blue-900/30 shrink-0">
+                <Link to="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
+                  <img
+                    src={footerLogo}
+                    alt="ASPK4Hapur Logo"
+                    className="h-9 w-auto max-h-10 object-contain shrink-0 drop-shadow"
+                  />
                 </Link>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
                 >
                   <X className="w-4.5 h-4.5" />
                 </button>
@@ -465,6 +533,6 @@ export default function Navbar() {
       </AnimatePresence>
 
 
-    </>
+    </header>
   );
 }
