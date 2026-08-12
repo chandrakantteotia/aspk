@@ -174,7 +174,7 @@ export default function Navbar() {
                   className="h-8 w-auto max-h-9 object-contain shrink-0 filter drop-shadow-md"
                 />
                 <span className="font-display font-black text-lg tracking-tight text-white drop-shadow-sm">
-                  ASPK<span className="text-yellow-300 font-serif italic ml-0.5">4HAPUR</span>
+                  ASPK4HAPUR
                 </span>
               </div>
             </Link>

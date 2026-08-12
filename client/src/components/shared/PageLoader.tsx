@@ -1,6 +1,6 @@
 import React from 'react';
-import { Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import footerLogo from '@/images/footerlogo.png';
 
 interface PageLoaderProps {
   className?: string;
@@ -8,18 +8,24 @@ interface PageLoaderProps {
 
 const PageLoader: React.FC<PageLoaderProps> = ({ className = 'h-64' }) => {
   return (
-    <div className={`flex flex-col items-center justify-center gap-4 ${className}`}>
-      <div className="relative">
-        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-          <Loader2 className="w-7 h-7 text-primary animate-spin" />
-        </div>
+    <div className={`flex flex-col items-center justify-center gap-3.5 ${className}`}>
+      <div className="relative flex items-center justify-center">
+        {/* Outer Spinning Ring */}
         <motion.div
-          className="absolute inset-0 rounded-2xl border-2 border-primary/20"
-          animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0, 0.6] }}
-          transition={{ repeat: Infinity, duration: 1.6 }}
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+          className="w-14 h-14 rounded-full border-2 border-[#0004A3]/20 border-t-[#0004A3] border-r-blue-400"
+        />
+        {/* Inner Logo Badge */}
+        <img
+          src={footerLogo}
+          alt="Loading..."
+          className="absolute w-7 h-7 object-contain drop-shadow"
         />
       </div>
-      <p className="text-sm text-slate-400 font-medium animate-pulse">Loading...</p>
+      <p className="text-xs text-[#0004A3] font-bold font-display tracking-widest uppercase animate-pulse">
+        ASPK4HAPUR
+      </p>
     </div>
   );
 };

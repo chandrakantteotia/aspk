@@ -64,11 +64,11 @@ function HeroImageSlider({ reverse = false }: { reverse?: boolean }) {
 export default function HeroSection() {
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden min-h-[100dvh] min-h-[760px] sm:min-h-[600px] lg:min-h-[700px]"
       aria-label="Hero section"
     >
       {/* ── Background Image establishing natural section height ── */}
-      <div className="relative w-full">
+      <div className="relative w-full min-h-[100dvh] min-h-[760px] sm:min-h-[600px] lg:min-h-[700px]">
         <picture>
           <source media="(max-width: 768px)" srcSet={heroPhone} />
           <motion.img
@@ -78,62 +78,82 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 1.03 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="w-full h-auto min-h-[520px] sm:min-h-[600px] lg:min-h-[700px] object-cover block"
+            className="w-full h-full min-h-[100dvh] min-h-[760px] sm:min-h-[600px] lg:min-h-[700px] object-cover block"
           />
         </picture>
 
-        {/* Dark gradient overlay tuned for right-side text readability */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/65 to-black/20 pointer-events-none" />
+        {/* Dark gradient overlay tuned for right-side text readability on desktop & bottom gradient on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 sm:bg-gradient-to-l sm:from-black/90 sm:via-black/65 sm:to-black/20 pointer-events-none" />
         {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
 
-        {/* ── Content Overlay (Right-aligned) ── */}
-        <div className="absolute inset-0 z-10 container-padded pt-24 sm:pt-36 pb-8 sm:pb-12 flex flex-col justify-center items-end text-right">
-          <div className="max-w-2xl flex flex-col items-end text-right ml-auto">
+        {/* ── Content Overlay (Centered at bottom on mobile, right-aligned on desktop) ── */}
+        <div className="absolute inset-0 z-10 container-padded pt-20 sm:pt-36 pb-14 sm:pb-12 flex flex-col justify-end sm:justify-center items-center sm:items-end text-center sm:text-right">
+          <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl flex flex-col items-center sm:items-end text-center sm:text-right mx-auto sm:ml-auto sm:mr-0 w-full"
+          >
 
             {/* Single Photo Animation Slider */}
-            <div className="mb-4 sm:mb-5 w-full flex justify-end">
+            <motion.div
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-3 sm:mb-5 w-full flex justify-center sm:justify-end"
+            >
               <HeroImageSlider />
-            </div>
+            </motion.div>
 
             {/* Paragraph Text */}
-            <p className="text-white/85 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-right">
+            <motion.p
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="text-white/90 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-center sm:text-right px-2 sm:px-0"
+            >
               Building a new era of transparent governance, community service, and true
               representation. Join the movement that listens to every citizen.
-            </p>
+            </motion.p>
 
-            {/* CTA Buttons right-aligned */}
-            <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4 mb-4">
+            {/* CTA Buttons - Center aligned on mobile bottom, right aligned on desktop */}
+            <motion.div
+              initial={{ opacity: 0, y: -35 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.3, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-center sm:justify-end gap-3 sm:gap-4 mb-3 sm:mb-4 w-full sm:w-auto px-2 sm:px-0"
+            >
               <Link
                 to="/join"
-                className="px-8 py-3.5 sm:px-9 sm:py-4 rounded-none border-2 border-white bg-[#0004A3] text-white font-bold hover:bg-white hover:text-[#0004A3] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm sm:text-base shadow-md"
+                className="flex-1 sm:flex-initial text-center min-w-[130px] sm:min-w-[150px] px-7 py-3.5 sm:px-9 sm:py-4 rounded-xl sm:rounded-none border-2 border-white bg-[#0004A3] text-white font-bold hover:bg-white hover:text-[#0004A3] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-sm sm:text-base shadow-lg cursor-pointer transform active:scale-95"
               >
                 Join
               </Link>
               <Link
                 to="/donate"
-                className="px-8 py-3.5 sm:px-9 sm:py-4 rounded-none border-2 border-white bg-white text-[#0004A3] font-bold hover:bg-[#0004A3] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-sm sm:text-base shadow-md"
+                className="flex-1 sm:flex-initial text-center min-w-[130px] sm:min-w-[150px] px-7 py-3.5 sm:px-9 sm:py-4 rounded-xl sm:rounded-none border-2 border-white bg-white text-[#0004A3] font-bold hover:bg-[#0004A3] hover:text-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-sm sm:text-base shadow-lg cursor-pointer transform active:scale-95"
               >
                 Donate
               </Link>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.0, duration: 1 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-20 pointer-events-none"
+          transition={{ delay: 1.8, duration: 1 }}
+          className="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-20 pointer-events-none"
         >
-          <span className="text-[10px] text-white/50 font-bold uppercase tracking-[0.2em]">Scroll</span>
+          <span className="text-[10px] text-white/60 font-bold uppercase tracking-[0.2em]">Scroll</span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
           >
-            <ChevronDown className="w-4 h-4 text-white/50" />
+            <ChevronDown className="w-4 h-4 text-white/60" />
           </motion.div>
         </motion.div>
 

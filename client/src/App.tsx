@@ -10,9 +10,9 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 
 import Layout from '@/components/layout/Layout';
 import ProtectedRoute from '@/components/shared/ProtectedRoute';
+import HomePage from '@/pages/public/HomePage';
 
 // ── Lazy-loaded public pages ───────────────────────────────────
-const HomePage = lazy(() => import('@/pages/public/HomePage'));
 const AboutPage = lazy(() => import('@/pages/public/AboutPage'));
 const ManifestoPage = lazy(() => import('@/pages/public/ManifestoPage'));
 const MembersPage = lazy(() => import('@/pages/public/MembersPage'));
