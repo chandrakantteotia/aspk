@@ -6,11 +6,19 @@ export default function InitialLoader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fast 1 second initial loader
-    const timer = setTimeout(() => {
+    const handleLoad = () => setLoading(false);
+
+    if (document.readyState === 'complete') {
       setLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
+    } else {
+      window.addEventListener('load', handleLoad);
+      const timer = setTimeout(() => setLoading(false), 2500);
+
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
   return (
