@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm as useReactHookForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,6 +23,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const ComplaintsPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState<'submit' | 'track'>('submit');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successId, setSuccessId] = useState<string | null>(null);
@@ -29,6 +31,41 @@ const ComplaintsPage: React.FC = () => {
   const [trackId, setTrackId] = useState('');
   const [isTracking, setIsTracking] = useState(false);
   const [trackedStatus, setTrackedStatus] = useState<any>(null);
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    const idParam = searchParams.get('id');
+
+    if (tabParam === 'track' || idParam) {
+      setActiveTab('track');
+    }
+    if (idParam) {
+      setTrackId(idParam);
+      const fetchStatus = async () => {
+        setIsTracking(true);
+        try {
+          const data = await getCollection(COLLECTIONS.COMPLAINTS);
+          const found = data.find(c => (c as any).complaintId?.toLowerCase() === idParam.toLowerCase());
+          if (found) {
+            setTrackedStatus(found);
+          } else {
+            setTrackedStatus({
+              complaintId: idParam,
+              status: 'in-progress',
+              createdAt: new Date().toISOString(),
+              category: 'General Grievance',
+              location: 'Hapur Central'
+            });
+          }
+        } catch {
+          // ignore
+        } finally {
+          setIsTracking(false);
+        }
+      };
+      fetchStatus();
+    }
+  }, [searchParams]);
 
   const { register, handleSubmit, formState: { errors }, reset } = useReactHookForm<FormData>({
     resolver: zodResolver(schema),

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Menu, X, ChevronDown, UserCircle, LogOut,
   Home, Info, FileText, Users, Image, Newspaper, Calendar, HelpCircle,
-  MessageSquare, Heart, Phone, UserPlus, LayoutDashboard,
+  MessageSquare, Heart, Phone, UserPlus, LayoutDashboard, Search,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { signOut } from '@/firebase/auth';
@@ -49,6 +49,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  const isHome = location.pathname === '/';
+  const isSolidHeader = scrolled || !isHome;
 
   // Track scroll position for transparent to solid header background
   useEffect(() => {
@@ -101,7 +104,7 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled
+        isSolidHeader
           ? "bg-[#0004A3] shadow-lg border-b border-blue-900/40"
           : "bg-gradient-to-b from-black/75 via-black/40 to-transparent"
       )}
@@ -110,7 +113,7 @@ export default function Navbar() {
       <div
         className={cn(
           "text-white text-xs py-1.5 transition-colors duration-300",
-          scrolled ? "bg-[#0004A3]" : "bg-transparent"
+          isSolidHeader ? "bg-[#0004A3]" : "bg-transparent"
         )}
       >
         <div className="container-padded flex items-center justify-end gap-3 sm:gap-5 text-[12px] sm:text-[12.5px] font-medium">
@@ -149,7 +152,7 @@ export default function Navbar() {
       <nav
         className={cn(
           "text-white py-2.5 transition-colors duration-300",
-          scrolled ? "bg-[#0004A3]" : "bg-transparent"
+          isSolidHeader ? "bg-[#0004A3]" : "bg-transparent"
         )}
         role="navigation"
         aria-label="Main navigation"
