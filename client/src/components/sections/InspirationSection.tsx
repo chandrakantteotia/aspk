@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 
-// Auto-import all inspiration images (image.png, image1.png, ..., image40.png) from src/images
-const inspirationModules = import.meta.glob<{ default: string }>('@/images/image*.png', { eager: true });
+// Auto-import all inspiration images (image1, image2, etc) regardless of extension
+const inspirationModules = import.meta.glob<{ default: string }>('@/images/image*.*', { eager: true });
 const INSPIRATION_IMAGES: string[] = Object.values(inspirationModules).map(mod => mod.default);
 
 export default function InspirationSection() {
@@ -22,27 +22,45 @@ export default function InspirationSection() {
           </h2>
         </div>
 
-        {/* 204px x 273px Cards Infinite Auto-Scrolling Slider */}
+        {/* 204px x 273px Cards - Auto-Scrolling Slider (if many images) or Static Centered (if few) */}
         <div className="w-full overflow-hidden py-2">
-          <motion.div
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ repeat: Infinity, duration: 45, ease: 'linear' }}
-            className="flex items-center gap-5 w-max px-4 pointer-events-none"
-          >
-            {[...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES].map((imgSrc, idx) => (
-              <div
-                key={idx}
-                className="shrink-0 rounded-2xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
-                style={{ width: '204px', height: '273px' }}
-              >
-                <img
-                  src={imgSrc}
-                  alt={`Inspiration ${idx + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            ))}
-          </motion.div>
+          {INSPIRATION_IMAGES.length > 3 ? (
+            <motion.div
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{ repeat: Infinity, duration: 45, ease: 'linear' }}
+              className="flex items-center gap-5 w-max px-4 pointer-events-none"
+            >
+              {[...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES].map((imgSrc, idx) => (
+                <div
+                  key={idx}
+                  className="shrink-0 rounded-2xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
+                  style={{ width: '204px', height: '273px' }}
+                >
+                  <img
+                    src={imgSrc}
+                    alt={`Inspiration ${idx + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          ) : (
+            <div className="flex flex-wrap justify-center items-center gap-5 px-4 pointer-events-none">
+              {INSPIRATION_IMAGES.map((imgSrc, idx) => (
+                <div
+                  key={idx}
+                  className="shrink-0 rounded-2xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
+                  style={{ width: '204px', height: '273px' }}
+                >
+                  <img
+                    src={imgSrc}
+                    alt={`Inspiration ${idx + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
       </div>

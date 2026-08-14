@@ -34,16 +34,16 @@ const GALLERY_IMAGES = [
 /* ─── Hero Horizontal Image Slider ─── */
 function HeroImageSlider({ reverse = false }: { reverse?: boolean }) {
   return (
-    <div className="w-full max-w-xl sm:max-w-2xl overflow-hidden py-1">
+    <div className="w-full max-w-lg sm:max-w-xl overflow-hidden py-1">
       <motion.div
         animate={{ x: reverse ? ['-50%', '0%'] : ['0%', '-50%'] }}
         transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
-        className="flex items-center gap-3.5 w-max"
+        className="flex items-center gap-3 w-max"
       >
         {[...GALLERY_IMAGES, ...GALLERY_IMAGES, ...GALLERY_IMAGES].map((img, idx) => (
           <div
             key={idx}
-            className="group relative w-44 sm:w-52 md:w-60 h-28 sm:h-34 md:h-38 rounded-xl overflow-hidden border-2 border-white/25 shadow-xl shrink-0 cursor-pointer"
+            className="group relative w-36 sm:w-44 md:w-52 h-24 sm:h-28 md:h-32 rounded-xl overflow-hidden border-2 border-white/25 shadow-xl shrink-0 cursor-pointer"
           >
             <img
               src={img.src}
@@ -82,18 +82,18 @@ export default function HeroSection() {
           />
         </picture>
 
-        {/* Dark gradient overlay tuned for right-side text readability on desktop & bottom gradient on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 sm:bg-gradient-to-l sm:from-black/90 sm:via-black/65 sm:to-black/20 pointer-events-none" />
+        {/* Dark gradient overlay tuned for left-side text readability on desktop & top gradient on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/50 to-black/20 sm:bg-gradient-to-r sm:from-black/90 sm:via-black/65 sm:to-black/20 pointer-events-none" />
         {/* Bottom fade */}
         <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
 
-        {/* ── Content Overlay (Centered at bottom on mobile, right-aligned on desktop) ── */}
-        <div className="absolute inset-0 z-10 container-padded pt-20 sm:pt-36 pb-14 sm:pb-12 flex flex-col justify-end sm:justify-center items-center sm:items-end text-center sm:text-right">
+        {/* ── Content Overlay (Top on mobile, left-aligned on desktop) ── */}
+        <div className="absolute inset-0 z-10 container-padded pt-28 sm:pt-36 pb-14 sm:pb-12 flex flex-col justify-start sm:justify-center items-center sm:items-start text-center sm:text-left">
           <motion.div
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl flex flex-col items-center sm:items-end text-center sm:text-right mx-auto sm:ml-auto sm:mr-0 w-full"
+            className="max-w-2xl flex flex-col items-center sm:items-start text-center sm:text-left mx-auto sm:ml-0 sm:mr-auto w-full h-full sm:h-auto"
           >
 
             {/* Single Photo Animation Slider */}
@@ -101,7 +101,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-3 sm:mb-5 w-full flex justify-center sm:justify-end"
+              className="mb-3 sm:mb-5 w-full flex justify-center sm:justify-start"
             >
               <HeroImageSlider />
             </motion.div>
@@ -111,18 +111,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/90 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-center sm:text-right px-2 sm:px-0"
+              className="text-white/90 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-center sm:text-left px-2 sm:px-0"
             >
               Building a new era of transparent governance, community service, and true
               representation. Join the movement that listens to every citizen.
             </motion.p>
 
-            {/* CTA Buttons - Center aligned on mobile bottom, right aligned on desktop */}
+            {/* CTA Buttons - Center aligned on mobile bottom, left aligned on desktop */}
             <motion.div
               initial={{ opacity: 0, y: -35 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.3, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center justify-center sm:justify-end gap-3 sm:gap-4 mb-3 sm:mb-4 w-full sm:w-auto px-2 sm:px-0"
+              className="mt-auto sm:mt-0 flex items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-3 sm:mb-4 w-full sm:w-auto px-2 sm:px-0"
             >
               <Link
                 to="/join"
