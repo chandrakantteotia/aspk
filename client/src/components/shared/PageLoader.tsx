@@ -23,8 +23,8 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = 'h-64' }) => {
           className="absolute w-7 h-7 object-contain drop-shadow"
         />
       </div>
-      <p className="text-xs text-[var(--color-primary)] font-bold font-display tracking-widest uppercase animate-pulse">
-        ASPK4HAPUR
+      <p className="text-[11px] text-[var(--color-primary)] font-bold font-display uppercase animate-pulse tracking-wide">
+        आजाद समाज पार्टी (काशीराम)
       </p>
     </div>
   );

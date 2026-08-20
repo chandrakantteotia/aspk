@@ -62,8 +62,8 @@ export default function InitialLoader() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col items-center"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-white">
-                ASPK4HAPUR
+              <div className="text-xl sm:text-2xl font-extrabold font-display tracking-tight text-white drop-shadow-sm">
+                आजाद समाज पार्टी (काशीराम)
               </div>
               <p className="text-white/60 text-[11px] font-medium tracking-widest uppercase mt-1.5">
                 People First. Nation First.

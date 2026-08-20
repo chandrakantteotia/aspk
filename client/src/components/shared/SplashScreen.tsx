@@ -51,10 +51,9 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             initial={{ y: '100%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="flex items-center text-2xl sm:text-3xl"
+            className="flex items-center text-xl sm:text-2xl"
           >
-            <span className="font-display font-bold tracking-tight text-white">ASPK</span>
-            <span className="font-display font-medium tracking-tight text-[var(--color-gold)]">4Hapur</span>
+            <span className="font-display font-bold tracking-tight text-white drop-shadow-sm">आजाद समाज पार्टी (काशीराम)</span>
           </motion.div>
         </div>
 
