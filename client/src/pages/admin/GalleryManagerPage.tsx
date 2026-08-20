@@ -80,7 +80,7 @@ const GalleryManagerPage: React.FC = () => {
             <div key={item.id} className="relative group rounded-xl overflow-hidden shadow-sm aspect-square bg-slate-100">
               <img src={item.mediaUrl} alt={item.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <button onClick={() => handleDelete(item.id!)} className="bg-danger text-white p-2 rounded-full hover:bg-danger/80">
+                <button onClick={() => handleDelete(item.id!)} className="bg-danger text-white p-2 rounded-lg hover:bg-danger/80">
                   <Trash2 size={20} />
                 </button>
               </div>

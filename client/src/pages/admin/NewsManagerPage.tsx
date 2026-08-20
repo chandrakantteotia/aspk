@@ -155,7 +155,7 @@ const NewsManagerPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
         <div className="p-4 border-b border-slate-100">
           <div className="relative max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
@@ -203,7 +203,7 @@ const NewsManagerPage: React.FC = () => {
                       <button
                         onClick={() => togglePublished(article.id, article.published)}
                         className={cn(
-                          'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-colors border',
+                          'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-colors border',
                           article.published
                             ? 'bg-success/10 text-green-700 border-success/20 hover:bg-success/20'
                             : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
@@ -232,8 +232,8 @@ const NewsManagerPage: React.FC = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-dark/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-premium w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-dark/50  z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-premium w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
             <div className="p-5 border-b border-slate-100 flex justify-between items-center">
               <h3 className="font-display font-bold text-lg text-slate-800">
                 {editingId ? 'Edit Article' : 'Create Article'}

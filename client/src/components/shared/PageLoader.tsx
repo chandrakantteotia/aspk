@@ -14,7 +14,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = 'h-64' }) => {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
-          className="w-14 h-14 rounded-full border-2 border-[#0004A3]/20 border-t-[#0004A3] border-r-blue-400"
+          className="w-14 h-14 rounded-full border-2 border-[var(--color-primary)]/20 border-t-[var(--color-primary)] border-r-blue-400"
         />
         {/* Inner Logo Badge */}
         <img
@@ -23,7 +23,7 @@ const PageLoader: React.FC<PageLoaderProps> = ({ className = 'h-64' }) => {
           className="absolute w-7 h-7 object-contain drop-shadow"
         />
       </div>
-      <p className="text-xs text-[#0004A3] font-bold font-display tracking-widest uppercase animate-pulse">
+      <p className="text-xs text-[var(--color-primary)] font-bold font-display tracking-widest uppercase animate-pulse">
         ASPK4HAPUR
       </p>
     </div>

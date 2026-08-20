@@ -19,10 +19,10 @@ const CYCLING_WORDS = [
   { text: 'Community', color: 'text-green-300' },
 ];
 
-import gallery1 from '@/images/gallery-1.jpg';
-import gallery2 from '@/images/gallery-2.jpg';
-import gallery3 from '@/images/gallery-3.jpg';
-import gallery4 from '@/images/gallery-4.jpg';
+import gallery1 from '@/images/gallery-1.jpeg';
+import gallery2 from '@/images/gallery-2.jpeg';
+import gallery3 from '@/images/gallery-3.jpeg';
+import gallery4 from '@/images/gallery-4.jpeg';
 
 const GALLERY_IMAGES = [
   { src: gallery1, title: 'Public Rally & Ground Work' },
@@ -111,30 +111,29 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="text-white/90 text-sm sm:text-lg leading-relaxed mb-5 sm:mb-6 max-w-xl font-medium text-center sm:text-left px-2 sm:px-0"
+              className="text-white/90 text-base sm:text-xl leading-relaxed mb-6 sm:mb-8 max-w-xl font-medium text-center sm:text-left px-4 sm:px-0"
             >
-              Building a new era of transparent governance, community service, and true
-              representation. Join the movement that listens to every citizen.
+              सशक्तिकरण महाअभियान के अंतर्गत युवाओं को सामाजिक, आर्थिक, राजनीतिक, शैक्षणिक, सांस्कृतिक रूप से सशक्त कर आत्मविश्वासी बनाकर उनको उज्जवल भविष्य की ओर अग्रसर करना है|
             </motion.p>
 
-            {/* CTA Buttons - Center aligned on mobile bottom, left aligned on desktop */}
+            {/* CTA Buttons - Center aligned horizontally on all screens */}
             <motion.div
               initial={{ opacity: 0, y: -35 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.3, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-auto sm:mt-0 flex items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-3 sm:mb-4 w-full sm:w-auto px-2 sm:px-0"
+              className="mt-auto sm:mt-0 flex flex-row items-center justify-center sm:justify-start gap-2 sm:gap-4 mb-16 sm:mb-3 w-full sm:w-auto px-4 sm:px-0"
             >
               <Link
                 to="/join"
-                className="flex-1 sm:flex-initial text-center min-w-[130px] sm:min-w-[150px] px-7 py-3.5 sm:px-9 sm:py-4 rounded-xl sm:rounded-none border-2 border-white bg-[#0004A3] text-white font-bold hover:bg-white hover:text-[#0004A3] hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-sm sm:text-base shadow-lg cursor-pointer transform active:scale-95"
+                className="w-full flex-1 sm:flex-initial text-center px-2 sm:px-8 py-3 sm:py-3.5 rounded-lg border border-transparent bg-primary text-white font-semibold hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-button transition-all duration-300 text-[13px] sm:text-base shadow-sm cursor-pointer whitespace-nowrap"
               >
-                Join
+                Join the Party
               </Link>
               <Link
                 to="/donate"
-                className="flex-1 sm:flex-initial text-center min-w-[130px] sm:min-w-[150px] px-7 py-3.5 sm:px-9 sm:py-4 rounded-xl sm:rounded-none border-2 border-white bg-white text-[#0004A3] font-bold hover:bg-[#0004A3] hover:text-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 text-sm sm:text-base shadow-lg cursor-pointer transform active:scale-95"
+                className="w-full flex-1 sm:flex-initial text-center px-2 sm:px-8 py-3 sm:py-3.5 rounded-lg border border-white/20 bg-white/10 text-white font-semibold hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300 text-[13px] sm:text-base cursor-pointer whitespace-nowrap"
               >
-                Donate
+                Support Us
               </Link>
             </motion.div>
 

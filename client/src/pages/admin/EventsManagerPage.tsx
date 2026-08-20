@@ -128,7 +128,7 @@ const EventsManagerPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           {loading ? (
             <div className="flex justify-center items-center h-48"><Loader2 className="w-7 h-7 text-primary animate-spin" /></div>
@@ -148,7 +148,7 @@ const EventsManagerPage: React.FC = () => {
                   <tr key={ev.id} className="hover:bg-slate-50/60 transition-colors">
                     <td className="py-3 px-5 text-sm font-medium text-slate-800 max-w-[220px] truncate">{ev.title}</td>
                     <td className="py-3 px-5">
-                      <span className={cn('px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize', typeColors[ev.type?.toLowerCase() ?? 'other'] ?? 'bg-gray-100 text-gray-600')}>
+                      <span className={cn('px-2.5 py-0.5 rounded-lg text-xs font-semibold capitalize', typeColors[ev.type?.toLowerCase() ?? 'other'] ?? 'bg-gray-100 text-gray-600')}>
                         {ev.type}
                       </span>
                     </td>
@@ -159,7 +159,7 @@ const EventsManagerPage: React.FC = () => {
                       <div className="flex items-center gap-1.5 max-w-[160px] truncate"><MapPin size={13} className="text-slate-400 flex-shrink-0" />{ev.location}</div>
                     </td>
                     <td className="py-3 px-5">
-                      <span className={cn('px-2.5 py-0.5 rounded-full text-xs font-semibold', ev.published ? 'bg-success/10 text-green-700' : 'bg-slate-100 text-slate-600')}>
+                      <span className={cn('px-2.5 py-0.5 rounded-lg text-xs font-semibold', ev.published ? 'bg-success/10 text-green-700' : 'bg-slate-100 text-slate-600')}>
                         {ev.published ? <><Check size={10} className="inline mr-1" />Live</> : 'Draft'}
                       </span>
                     </td>
@@ -178,8 +178,8 @@ const EventsManagerPage: React.FC = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-dark/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-premium w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-dark/50  z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-premium w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col">
             <div className="p-5 border-b border-slate-100 flex justify-between items-center">
               <h3 className="font-display font-bold text-lg text-slate-800">{editingId ? 'Edit Event' : 'Create Event'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"><X size={18} /></button>

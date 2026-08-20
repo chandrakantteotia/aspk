@@ -61,7 +61,7 @@ const GalleryPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 activeTab === cat 
                   ? 'bg-primary text-white shadow-button' 
                   : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
@@ -76,7 +76,7 @@ const GalleryPage: React.FC = () => {
           <PageLoader className="py-20" />
         ) : filteredImages.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 text-center">
-            <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
+            <div className="w-20 h-20 bg-slate-50 rounded-lg flex items-center justify-center mb-6">
               <span className="text-3xl">📷</span>
             </div>
             <h3 className="text-2xl font-bold text-dark font-display mb-3">No moments found</h3>
@@ -93,11 +93,11 @@ const GalleryPage: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
-                  className="relative group rounded-2xl overflow-hidden cursor-pointer break-inside-avoid shadow-sm border border-slate-100"
+                  className="relative group rounded-xl overflow-hidden cursor-pointer break-inside-avoid shadow-sm border border-slate-100"
                   onClick={() => setSelectedImage(img)}
                 >
-                  <img src={img.mediaUrl} alt={img.title} className="w-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-dark text-xs font-bold px-3 py-1 rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <img src={img.mediaUrl} alt={img.title} className="w-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <div className="absolute top-3 left-3 bg-white/95  text-dark text-xs font-bold px-3 py-1 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                     {img.category}
                   </div>
                   <div className="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-6 text-center">
@@ -118,10 +118,10 @@ const GalleryPage: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/95 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/95 "
             onClick={() => setSelectedImage(null)}
           >
-            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 bg-white/10 rounded-full z-50">
+            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 bg-white/10 rounded-lg z-50">
               <X className="w-8 h-8" />
             </button>
             <motion.div
@@ -131,11 +131,11 @@ const GalleryPage: React.FC = () => {
               className="relative max-w-6xl w-full flex flex-col items-center z-40"
               onClick={e => e.stopPropagation()}
             >
-              <img src={selectedImage.mediaUrl} alt={selectedImage.title} className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl" />
-              <div className="mt-8 text-center text-white bg-dark/50 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/10">
+              <img src={selectedImage.mediaUrl} alt={selectedImage.title} className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-lg" />
+              <div className="mt-8 text-center text-white bg-dark/50  px-8 py-4 rounded-xl border border-white/10">
                 <h2 className="text-2xl font-display font-bold mb-2">{selectedImage.title}</h2>
                 <div className="flex items-center justify-center gap-3 text-sm text-slate-300 font-medium">
-                  <span className="bg-primary/20 text-primary-100 px-3 py-1 rounded-full">{selectedImage.category}</span>
+                  <span className="bg-primary/20 text-primary-100 px-3 py-1 rounded-lg">{selectedImage.category}</span>
                   {selectedImage.date && (
                     <span>{formatDate(selectedImage.date)}</span>
                   )}

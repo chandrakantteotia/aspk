@@ -25,8 +25,8 @@ const ForgotPasswordPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-card text-center">
-        <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-card text-center">
+        <div className="w-16 h-16 bg-primary/10 text-primary rounded-lg flex items-center justify-center mx-auto mb-6">
           <Mail size={28} />
         </div>
 

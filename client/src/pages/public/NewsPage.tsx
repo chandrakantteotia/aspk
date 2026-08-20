@@ -68,14 +68,14 @@ const NewsPage: React.FC = () => {
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-card border border-slate-100 flex flex-col lg:flex-row group cursor-pointer"
+                className="bg-white rounded-xl overflow-hidden shadow-card border border-slate-100 flex flex-col lg:flex-row group cursor-pointer"
               >
                 <div className="lg:w-3/5 overflow-hidden relative min-h-[400px]">
                   <img src={featured.imageUrl} alt={featured.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
                 </div>
                 <div className="lg:w-2/5 p-10 lg:p-16 flex flex-col justify-center bg-white relative z-10">
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="bg-slate-100 text-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">{featured.category}</span>
+                    <span className="bg-slate-100 text-dark text-xs font-bold px-3 py-1 rounded-lg uppercase tracking-wider">{featured.category}</span>
                     <div className="flex items-center text-sm text-slate-500 font-medium">
                       <Calendar className="w-4 h-4 mr-2" />
                       {new Date(featured.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -99,11 +99,11 @@ const NewsPage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group flex flex-col cursor-pointer"
+                  className="bg-white rounded-xl overflow-hidden shadow-card border border-slate-100 group flex flex-col cursor-pointer"
                 >
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <img src={article.imageUrl} alt={article.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-dark text-xs font-bold px-3 py-1 rounded-full shadow-sm">{article.category}</div>
+                    <div className="absolute top-4 left-4 bg-white/95  text-dark text-xs font-bold px-3 py-1 rounded-lg shadow-sm">{article.category}</div>
                   </div>
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="flex items-center text-sm text-slate-400 mb-4 font-medium uppercase tracking-wider">
@@ -122,13 +122,13 @@ const NewsPage: React.FC = () => {
             {/* Pagination Placeholder */}
             <div className="flex justify-center pt-10">
               <nav className="flex gap-2">
-                <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 text-slate-500 transition-colors">
+                <button className="w-12 h-12 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 text-slate-500 transition-colors">
                   <ChevronRight className="w-5 h-5 rotate-180" />
                 </button>
-                <button className="w-12 h-12 rounded-full bg-primary text-white font-bold flex items-center justify-center shadow-button">1</button>
-                <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-700 font-medium transition-colors">2</button>
-                <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-700 font-medium transition-colors">3</button>
-                <button className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-500 transition-colors">
+                <button className="w-12 h-12 rounded-lg bg-primary text-white font-bold flex items-center justify-center shadow-button">1</button>
+                <button className="w-12 h-12 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-700 font-medium transition-colors">2</button>
+                <button className="w-12 h-12 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-700 font-medium transition-colors">3</button>
+                <button className="w-12 h-12 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 text-slate-500 transition-colors">
                   <ChevronRight className="w-5 h-5" />
                 </button>
               </nav>

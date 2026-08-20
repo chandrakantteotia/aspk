@@ -85,7 +85,7 @@ const SettingsPage: React.FC = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Site Information */}
-        <div className="bg-white p-6 rounded-2xl shadow-card border border-slate-100 space-y-4">
+        <div className="bg-white p-6 rounded-xl shadow-card border border-slate-100 space-y-4">
           <h3 className="text-base font-display font-bold text-slate-800 border-b border-slate-100 pb-3">Site Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -116,7 +116,7 @@ const SettingsPage: React.FC = () => {
         </div>
 
         {/* Social Links */}
-        <div className="bg-white p-6 rounded-2xl shadow-card border border-slate-100 space-y-4">
+        <div className="bg-white p-6 rounded-xl shadow-card border border-slate-100 space-y-4">
           <h3 className="text-base font-display font-bold text-slate-800 border-b border-slate-100 pb-3">Social Links</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {(['facebook', 'twitter', 'instagram', 'youtube', 'linkedin'] as const).map(platform => (
@@ -129,7 +129,7 @@ const SettingsPage: React.FC = () => {
         </div>
 
         {/* Donation Info */}
-        <div className="bg-white p-6 rounded-2xl shadow-card border border-slate-100 space-y-4">
+        <div className="bg-white p-6 rounded-xl shadow-card border border-slate-100 space-y-4">
           <h3 className="text-base font-display font-bold text-slate-800 border-b border-slate-100 pb-3">Donation Details</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>

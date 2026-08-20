@@ -131,7 +131,7 @@ const DashboardPage: React.FC = () => {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-28 bg-white rounded-2xl border border-slate-100 animate-pulse" />
+            <div key={i} className="h-28 bg-white rounded-xl border border-slate-100 animate-pulse" />
           ))}
         </div>
       ) : (
@@ -148,7 +148,7 @@ const DashboardPage: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: 0.3 }}
-          className="lg:col-span-2 bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden"
+          className="lg:col-span-2 bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden"
         >
           <div className="flex items-center justify-between p-5 border-b border-slate-100">
             <h3 className="font-display font-bold text-slate-800 flex items-center gap-2">
@@ -202,7 +202,7 @@ const DashboardPage: React.FC = () => {
           className="space-y-4"
         >
           {/* Quick actions */}
-          <div className="bg-white rounded-2xl shadow-card border border-slate-100 p-5">
+          <div className="bg-white rounded-xl shadow-card border border-slate-100 p-5">
             <h3 className="font-display font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Activity size={18} className="text-primary" /> Quick Actions
             </h3>
@@ -229,7 +229,7 @@ const DashboardPage: React.FC = () => {
           </div>
 
           {/* Mini chart */}
-          <div className="bg-white rounded-2xl shadow-card border border-slate-100 p-5">
+          <div className="bg-white rounded-xl shadow-card border border-slate-100 p-5">
             <h3 className="font-display font-bold text-slate-800 mb-4 flex items-center gap-2">
               <TrendingUp size={18} className="text-primary" /> Monthly Donations
             </h3>

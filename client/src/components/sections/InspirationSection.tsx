@@ -13,8 +13,8 @@ export default function InspirationSection() {
         
         {/* Section Header */}
         <div className="container-padded mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#0004A3]/10 text-[#0004A3] text-xs font-bold uppercase tracking-wider mb-2">
-            <Heart className="w-3.5 h-3.5 fill-[#0004A3]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider mb-2">
+            <Heart className="w-3.5 h-3.5 fill-[var(--color-primary)]" />
             <span>Guiding Principles</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
@@ -33,7 +33,7 @@ export default function InspirationSection() {
               {[...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES].map((imgSrc, idx) => (
                 <div
                   key={idx}
-                  className="shrink-0 rounded-2xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
+                  className="shrink-0 rounded-xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
                   style={{ width: '204px', height: '273px' }}
                 >
                   <img
@@ -49,7 +49,7 @@ export default function InspirationSection() {
               {INSPIRATION_IMAGES.map((imgSrc, idx) => (
                 <div
                   key={idx}
-                  className="shrink-0 rounded-2xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
+                  className="shrink-0 rounded-xl overflow-hidden bg-white border-2 border-white shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer pointer-events-auto"
                   style={{ width: '204px', height: '273px' }}
                 >
                   <img

@@ -77,18 +77,18 @@ const JoinPage: React.FC = () => {
       <main className="w-full bg-gray-50 min-h-screen flex items-center justify-center py-20 px-4">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-          className="bg-white p-12 rounded-[2rem] shadow-sm border border-gray-100 max-w-lg w-full text-center"
+          className="bg-white p-12 rounded-xl shadow-sm border border-gray-100 max-w-lg w-full text-center"
         >
-          <div className="w-24 h-24 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-8">
+          <div className="w-24 h-24 bg-success/10 rounded-lg flex items-center justify-center mx-auto mb-8">
             <Check className="w-12 h-12 text-success" />
           </div>
           <h2 className="text-4xl font-display font-bold text-dark mb-4">Application Received</h2>
           <p className="text-gray-500 text-lg mb-8">Thank you for applying to join ASPK4Hapur. Your application ID is:</p>
-          <div className="bg-gray-50 border border-gray-200 py-4 px-8 rounded-2xl text-3xl font-mono font-bold tracking-widest text-primary mb-10 inline-block">
+          <div className="bg-gray-50 border border-gray-200 py-4 px-8 rounded-xl text-3xl font-mono font-bold tracking-widest text-primary mb-10 inline-block">
             {successId}
           </div>
           <p className="text-gray-500 mb-10">We will review your application and contact you shortly.</p>
-          <button onClick={() => window.location.href = '/'} className="px-8 py-4 bg-primary text-white font-bold text-lg rounded-full hover:bg-primary/90 transition-colors w-full shadow-md">
+          <button onClick={() => window.location.href = '/'} className="px-8 py-4 bg-primary text-white font-bold text-lg rounded-lg hover:bg-primary/90 transition-colors w-full shadow-md">
             Return to Home
           </button>
         </motion.div>
@@ -107,15 +107,15 @@ const JoinPage: React.FC = () => {
       </section>
 
       <section className="container-padded py-16 -mt-8 relative z-20">
-        <div className="max-w-4xl mx-auto bg-white rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           {/* Progress Indicator */}
           <div className="px-10 py-8 border-b border-gray-100 flex justify-between items-center relative">
-            <div className="absolute top-1/2 left-[15%] right-[15%] h-1 bg-gray-100 -translate-y-1/2 -z-0 rounded-full hidden sm:block">
-              <div className="h-full bg-primary transition-all duration-500 rounded-full" style={{ width: `${(step - 1) * 50}%` }} />
+            <div className="absolute top-1/2 left-[15%] right-[15%] h-1 bg-gray-100 -translate-y-1/2 -z-0 rounded-lg hidden sm:block">
+              <div className="h-full bg-primary transition-all duration-500 rounded-lg" style={{ width: `${(step - 1) * 50}%` }} />
             </div>
             {[1, 2, 3].map(num => (
               <div key={num} className="flex flex-col items-center relative z-10 bg-white px-4">
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all ${step > num ? 'bg-primary text-white' : step === num ? 'bg-primary/10 text-primary border-2 border-primary' : 'bg-gray-50 text-gray-400 border-2 border-gray-200'}`}>
+                <div className={`w-12 h-12 rounded-lg flex items-center justify-center font-bold text-lg transition-all ${step > num ? 'bg-primary text-white' : step === num ? 'bg-primary/10 text-primary border-2 border-primary' : 'bg-gray-50 text-gray-400 border-2 border-gray-200'}`}>
                   {step > num ? <Check className="w-6 h-6" /> : num}
                 </div>
                 <span className={`text-sm mt-3 font-bold uppercase tracking-wider ${step >= num ? 'text-dark' : 'text-gray-400'}`}>
@@ -224,7 +224,7 @@ const JoinPage: React.FC = () => {
 
               <div className="mt-12 flex justify-between pt-8 border-t border-gray-100">
                 {step > 1 ? (
-                  <button type="button" onClick={prevStep} className="flex items-center px-8 py-4 rounded-full border-2 border-gray-200 text-gray-700 font-bold hover:border-gray-300 hover:bg-gray-50 transition-all text-lg">
+                  <button type="button" onClick={prevStep} className="flex items-center px-8 py-4 rounded-lg border-2 border-gray-200 text-gray-700 font-bold hover:border-gray-300 hover:bg-gray-50 transition-all text-lg">
                     <ChevronLeft className="w-5 h-5 mr-2" /> Back
                   </button>
                 ) : (
@@ -232,11 +232,11 @@ const JoinPage: React.FC = () => {
                 )}
                 
                 {step < 3 ? (
-                  <button type="button" onClick={nextStep} className="flex items-center px-10 py-4 rounded-full bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-md text-lg">
+                  <button type="button" onClick={nextStep} className="flex items-center px-10 py-4 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-md text-lg">
                     Continue <ChevronRight className="w-5 h-5 ml-2" />
                   </button>
                 ) : (
-                  <button type="submit" disabled={isSubmitting} className="flex items-center px-10 py-4 rounded-full bg-success text-white font-bold hover:bg-success/90 transition-all shadow-md disabled:opacity-70 text-lg">
+                  <button type="submit" disabled={isSubmitting} className="flex items-center px-10 py-4 rounded-lg bg-success text-white font-bold hover:bg-success/90 transition-all shadow-md disabled:opacity-70 text-lg">
                     {isSubmitting ? 'Submitting...' : 'Submit Application'} <UserPlus className="w-5 h-5 ml-3" />
                   </button>
                 )}

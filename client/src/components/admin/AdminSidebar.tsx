@@ -72,7 +72,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed = false, onToggle
         {showLogout ? (
           <div className="flex-1 flex flex-col items-center justify-center p-5">
             <motion.div
-              className="w-full bg-red-50 border border-red-100 rounded-2xl p-5 text-center"
+              className="w-full bg-red-50 border border-red-100 rounded-xl p-5 text-center"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: 'spring', damping: 20, stiffness: 260 }}
@@ -151,7 +151,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed = false, onToggle
               {onToggle && collapsed && (
                 <button
                   onClick={onToggle}
-                  className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-primary text-white shadow-md flex items-center justify-center z-20"
+                  className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-lg bg-primary text-white shadow-md flex items-center justify-center z-20"
                   aria-label="Expand sidebar"
                 >
                   <ChevronRight size={12} />
@@ -165,7 +165,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed = false, onToggle
               collapsed ? 'px-2' : 'px-3',
               '[&::-webkit-scrollbar]:w-1',
               '[&::-webkit-scrollbar-thumb]:bg-slate-200',
-              '[&::-webkit-scrollbar-thumb]:rounded-full'
+              '[&::-webkit-scrollbar-thumb]:rounded-lg'
             )}>
               {navItems.map((item, idx) => {
                 if (item.section) {
@@ -218,7 +218,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed = false, onToggle
                         )}
                         {isActive && collapsed && (
                           <motion.div
-                            className={cn('absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full', item.activeBorder)}
+                            className={cn('absolute bottom-1.5 left-1/2 -translate-x-1/2 -full', item.activeBorder)}
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                           />
@@ -234,13 +234,13 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ collapsed = false, onToggle
             <div className="border-t border-slate-100 p-3 shrink-0">
               <div className={cn('flex items-center gap-2.5', collapsed && 'flex-col gap-2')}>
                 <div className="relative shrink-0">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm shadow-sm ring-2 ring-primary/10">
+                  <div className="w-9 h-9 rounded-xl  flex items-center justify-center text-white font-bold text-sm shadow-sm ring-2 ring-primary/10">
                     {profile?.photoURL
                       ? <img src={profile.photoURL} alt="avatar" className="w-full h-full rounded-xl object-cover" />
                       : initials
                     }
                   </div>
-                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white" />
+                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-lg bg-emerald-400 border-2 border-white" />
                 </div>
                 {!collapsed && (
                   <div className="flex-1 min-w-0">

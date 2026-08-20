@@ -42,7 +42,7 @@ export default function YoutubeSlider() {
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Play className="w-4 h-4 text-[#0004A3] fill-[#0004A3] ml-0.5" />
+                  <Play className="w-4 h-4 text-[var(--color-primary)] fill-[var(--color-primary)] ml-0.5" />
                 </div>
               </div>
               <div className="absolute bottom-0 inset-x-0 px-3 py-2 bg-gradient-to-t from-black/85 via-black/50 to-transparent">

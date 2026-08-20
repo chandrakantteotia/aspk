@@ -88,7 +88,7 @@ const EventsPage: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-3xl shadow-card border border-slate-100 overflow-hidden flex flex-col md:flex-row group transition-all duration-300 hover:shadow-premium"
+                  className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden flex flex-col md:flex-row group transition-all duration-300 hover:shadow-premium"
                 >
                   <div className="md:w-64 bg-slate-50 flex flex-col items-center justify-center p-8 border-b md:border-b-0 md:border-r border-slate-100">
                     <span className="text-xl font-bold text-primary uppercase tracking-widest">{eventDate.toLocaleString('en-US', { month: 'short' })}</span>
@@ -127,11 +127,11 @@ const EventsPage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group"
+              className="bg-white rounded-xl overflow-hidden shadow-card border border-slate-100 group"
             >
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img src={evt.imageUrl} alt={evt.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-dark text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                <div className="absolute top-4 left-4 bg-white/95  text-dark text-xs font-bold px-3 py-1 rounded-lg shadow-sm">
                   {new Date(evt.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </div>
               </div>
@@ -149,11 +149,11 @@ const EventsPage: React.FC = () => {
         {registerModalOpen && selectedEvent && (
           <motion.div 
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-dark/60 "
           >
             <motion.div 
               initial={{ scale: 0.95, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="bg-white rounded-3xl w-full max-w-lg p-10 relative shadow-2xl"
+              className="bg-white rounded-xl w-full max-w-lg p-10 relative shadow-lg"
             >
               <button onClick={() => setRegisterModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-dark transition-colors">
                 <X className="w-6 h-6" />

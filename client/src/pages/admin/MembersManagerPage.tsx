@@ -253,7 +253,7 @@ const MembersManagerPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
             <div className="overflow-x-auto">
               {appLoading ? (
                 <div className="flex justify-center items-center h-48"><Loader2 className="w-7 h-7 text-primary animate-spin" /></div>
@@ -277,7 +277,7 @@ const MembersManagerPage: React.FC = () => {
                         <td className="py-3 px-4 text-sm text-slate-600">{app.district}</td>
                         <td className="py-3 px-4 text-sm text-slate-500 whitespace-nowrap">{formatDate(app.createdAt)}</td>
                         <td className="py-3 px-4">
-                          <span className={cn('px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize', statusColors[app.status as AppStatus] ?? 'bg-gray-100 text-gray-600')}>
+                          <span className={cn('px-2.5 py-0.5 rounded-lg text-xs font-semibold capitalize', statusColors[app.status as AppStatus] ?? 'bg-gray-100 text-gray-600')}>
                             {app.status ?? 'pending'}
                           </span>
                         </td>
@@ -318,13 +318,13 @@ const MembersManagerPage: React.FC = () => {
             </button>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
             <div className="overflow-x-auto">
               {membersLoading ? (
                 <div className="flex justify-center items-center h-48"><Loader2 className="w-7 h-7 text-primary animate-spin" /></div>
               ) : members.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-64 text-slate-400">
-                  <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center mb-3">
+                  <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-3">
                     <Plus size={24} className="text-slate-300" />
                   </div>
                   <p className="text-sm font-medium text-slate-500">No leadership members yet.</p>
@@ -343,12 +343,12 @@ const MembersManagerPage: React.FC = () => {
                     {members.map(member => (
                       <tr key={member.id} className="hover:bg-slate-50/60 transition-colors">
                         <td className="py-3 px-4">
-                          <img src={member.photoUrl} alt={member.name} className="w-10 h-10 rounded-full object-cover shadow-sm" />
+                          <img src={member.photoUrl} alt={member.name} className="w-10 h-10 rounded-lg object-cover shadow-sm" />
                         </td>
                         <td className="py-3 px-4 text-sm font-medium text-slate-800">{member.name}</td>
                         <td className="py-3 px-4 text-sm text-slate-600">{member.role}</td>
                         <td className="py-3 px-4">
-                          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">{member.wing}</span>
+                          <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700">{member.wing}</span>
                         </td>
                         <td className="py-3 px-4 text-right">
                           <div className="flex items-center justify-end gap-1">
@@ -373,9 +373,9 @@ const MembersManagerPage: React.FC = () => {
       {/* ── App Detail Modal ─────────────────────────────────────── */}
       <AnimatePresence>
         {selectedApp && (
-          <div className="fixed inset-0 bg-dark/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-white rounded-2xl shadow-premium w-full max-w-lg max-h-[90vh] overflow-y-auto">
-              <div className="sticky top-0 bg-white/80 backdrop-blur p-5 border-b border-slate-100 flex justify-between items-center z-10">
+          <div className="fixed inset-0 bg-dark/50  z-[100] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-white rounded-xl shadow-premium w-full max-w-lg max-h-[90vh] overflow-y-auto">
+              <div className="sticky top-0 bg-white/80  p-5 border-b border-slate-100 flex justify-between items-center z-10">
                 <h3 className="font-display font-bold text-lg text-slate-800">Application Details</h3>
                 <button onClick={() => setSelectedApp(null)} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"><X size={18} /></button>
               </div>
@@ -422,8 +422,8 @@ const MembersManagerPage: React.FC = () => {
       {/* ── Member Editor Modal ──────────────────────────────────── */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 bg-dark/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-white rounded-2xl shadow-premium w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
+          <div className="fixed inset-0 bg-dark/50  z-[100] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="bg-white rounded-xl shadow-premium w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
               <div className="p-5 border-b border-slate-100 flex justify-between items-center shrink-0">
                 <h3 className="font-display font-bold text-lg text-slate-800">{editingMember ? 'Edit Leadership Member' : 'Add Leadership Member'}</h3>
                 <button onClick={() => setIsModalOpen(false)} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"><X size={18} /></button>
@@ -435,7 +435,7 @@ const MembersManagerPage: React.FC = () => {
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Photo</label>
                     <div className="flex items-center gap-4">
-                      <div className="w-20 h-20 rounded-full bg-slate-100 border-2 border-dashed border-slate-200 overflow-hidden flex items-center justify-center shrink-0">
+                      <div className="w-20 h-20 rounded-lg bg-slate-100 border-2 border-dashed border-slate-200 overflow-hidden flex items-center justify-center shrink-0">
                         {uploadingImage ? (
                           <Loader2 className="w-6 h-6 text-primary animate-spin" />
                         ) : photoUrl ? (

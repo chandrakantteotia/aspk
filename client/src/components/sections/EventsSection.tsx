@@ -9,10 +9,10 @@ import type { PartyEvent } from '@/types';
 import { formatDate } from '@/lib/utils';
 import { Timestamp } from 'firebase/firestore';
 
-import gallery1 from '@/images/gallery-1.jpg';
-import gallery2 from '@/images/gallery-2.jpg';
-import gallery3 from '@/images/gallery-3.jpg';
-import gallery4 from '@/images/gallery-4.jpg';
+import gallery1 from '@/images/gallery-1.jpeg';
+import gallery2 from '@/images/gallery-2.jpeg';
+import gallery3 from '@/images/gallery-3.jpeg';
+import gallery4 from '@/images/gallery-4.jpeg';
 
 const fallbackEvents: PartyEvent[] = [
   {
@@ -25,7 +25,7 @@ const fallbackEvents: PartyEvent[] = [
     district: 'Hapur',
     type: 'Public Town Hall',
     description: 'Open town hall to hear citizen concerns, present our 100-day development roadmap, and engage in direct Q&A.',
-    imageUrl: gallery1,
+    imageUrl: gallery4,
     registrationOpen: true,
     featured: true,
     published: true,
@@ -239,137 +239,103 @@ export default function EventsSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#0004A3]/10 text-[#0004A3] text-xs font-bold uppercase tracking-wider mb-3">
-              <Calendar className="w-3.5 h-3.5 fill-[#0004A3]" />
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-bold uppercase tracking-wider mb-3">
+              <Calendar className="w-3.5 h-3.5 fill-[var(--color-primary)]" />
               <span>Upcoming Public Schedule</span>
             </div>
             <h2
               id="events-heading"
               className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight"
             >
-              Join the <span className="text-[#0004A3]">Movement</span>
+              Join the <span className="text-[var(--color-primary)]">Movement</span>
             </h2>
           </div>
 
           <Link
             to="/events"
-            className="group inline-flex items-center gap-2 text-sm font-bold text-[#0004A3] hover:text-[#000270] transition-colors uppercase tracking-wider"
+            className="group inline-flex items-center gap-2 text-sm font-bold text-[var(--color-primary)] hover:text-[#000270] transition-colors uppercase tracking-wider"
           >
             <span>View All Events</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        {/* Layout Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Featured Main Event Card */}
+        {/* Single Full-Width Featured Event Card */}
+        <div className="w-full">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-7 group relative rounded-3xl overflow-hidden bg-slate-900 shadow-xl border-2 border-transparent hover:border-[#0004A3] transition-all duration-300 flex flex-col justify-end min-h-[380px] sm:min-h-[460px] h-[380px] sm:h-[460px]"
+            className="w-full group relative rounded-xl overflow-hidden bg-slate-900 shadow-2xl border border-slate-200/20 hover:border-[var(--color-primary)] transition-all duration-300 flex flex-col justify-end min-h-[420px] sm:min-h-[500px] md:min-h-[550px] lg:min-h-[600px]"
           >
-            <Link to={`/events/${featuredEvent.slug}`} className="block relative h-full w-full">
+            <div className="absolute inset-0 w-full h-full">
               <img
                 src={featuredEvent.imageUrl}
                 alt={featuredEvent.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-center md:object-[center_20%] transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
-              
-              {/* Floating Date Badge */}
-              <div className="absolute top-6 left-6 bg-white rounded-2xl shadow-xl flex flex-col items-center justify-center w-16 h-20 overflow-hidden border border-slate-100 shrink-0">
-                <div className="bg-[#0004A3] text-white w-full text-center text-[10px] font-extrabold uppercase py-1 tracking-wider">
-                  {featuredDate.month}
-                </div>
-                <div className="flex-1 flex items-center justify-center">
-                  <span className="text-2xl font-black text-slate-900 leading-none">{featuredDate.day}</span>
-                </div>
-              </div>
-
-              {/* Card Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <div className="flex flex-wrap items-center gap-2.5 mb-3">
-                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider border border-white/20">
-                    {featuredEvent.type}
-                  </span>
-                  {featuredEvent.registrationOpen && (
-                    <span className="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-extrabold uppercase tracking-wider shadow-sm">
-                      Open For All
-                    </span>
-                  )}
-                </div>
-                
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-3 leading-tight group-hover:text-amber-300 transition-colors">
-                  {featuredEvent.title}
-                </h3>
-                
-                <p className="text-white/80 text-sm line-clamp-2 mb-4 font-medium leading-relaxed">
-                  {featuredEvent.description}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-5 text-xs sm:text-sm text-white/90 font-semibold pt-3 border-t border-white/15">
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                    {featuredEvent.location}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                    {formatDate(featuredDate.date)}
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-
-          {/* Right Column: Infinite Vertical Auto-Scrolling List */}
-          <div className="lg:col-span-5 relative h-[380px] sm:h-[460px] overflow-hidden rounded-3xl bg-slate-100/60 p-2 border border-slate-200/80">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            </div>
             
-            {/* Top & Bottom Fade Overlays for Smooth Visual Gradient */}
-            <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-slate-100 via-slate-100/80 to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-slate-100 via-slate-100/80 to-transparent z-10 pointer-events-none" />
-
-            {/* Vertical Auto-Scrolling Track */}
-            <div className="animate-vertical-events flex flex-col gap-3 py-2 pointer-events-none">
-              {[...sideEvents, ...sideEvents].map((event, i) => {
-                const dateInfo = getEventDateInfo(event.date);
-                return (
-                  <Link
-                    key={`${event.id}-${i}`}
-                    to={`/events/${event.slug}`}
-                    className="group flex gap-4 sm:gap-5 p-4 sm:p-4.5 bg-white rounded-2xl border-l-4 border-[#0004A3] shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 items-center shrink-0 pointer-events-auto"
-                  >
-                    {/* Compact Date Box */}
-                    <div className="flex flex-col items-center justify-center shrink-0 w-14 h-14 rounded-xl bg-slate-100 group-hover:bg-[#0004A3] group-hover:text-white transition-colors duration-300 shadow-inner">
-                      <span className="text-[9px] font-extrabold uppercase tracking-widest text-slate-500 group-hover:text-amber-300 transition-colors">{dateInfo.month}</span>
-                      <span className="text-xl font-black leading-none text-slate-900 group-hover:text-white transition-colors">{dateInfo.day}</span>
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[10px] font-extrabold text-[#0004A3] uppercase tracking-wider mb-0.5">
-                        {event.type}
-                      </div>
-                      <h3 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-1 group-hover:text-[#0004A3] transition-colors truncate">
-                        {event.title}
-                      </h3>
-                      <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                        <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                        <span className="truncate">{event.location}</span>
-                      </div>
-                    </div>
-
-                    <div className="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-[#0004A3] group-hover:text-white flex items-center justify-center text-slate-400 transition-all shrink-0">
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
-                  </Link>
-                );
-              })}
+            {/* Floating Date Badge */}
+            <div className="absolute top-6 left-6 z-10 bg-white rounded-xl shadow-xl flex flex-col items-center justify-center w-16 h-20 overflow-hidden border border-slate-100 shrink-0">
+              <div className="bg-[var(--color-primary)] text-white w-full text-center text-[10px] font-extrabold uppercase py-1 tracking-wider">
+                {featuredDate.month}
+              </div>
+              <div className="flex-1 flex items-center justify-center">
+                <span className="text-2xl font-extrabold text-slate-900 leading-none">{featuredDate.day}</span>
+              </div>
             </div>
 
-          </div>
+            {/* Card Content Overlay */}
+            <div className="relative z-10 p-5 sm:p-8">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div className="flex-1 w-full">
+                  <Link to={`/events/${featuredEvent.slug}`} className="block">
+                    <div className="flex flex-wrap items-center gap-2.5 mb-3">
+                      <span className="px-3 py-1 rounded-full bg-white/20 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-white/20">
+                        {featuredEvent.type}
+                      </span>
+                      {featuredEvent.registrationOpen && (
+                        <span className="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] sm:text-xs font-extrabold uppercase tracking-wider shadow-sm">
+                          Open For All
+                        </span>
+                      )}
+                    </div>
+                    
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold !text-white mb-2 sm:mb-3 leading-tight transition-colors">
+                      {featuredEvent.title}
+                    </h3>
+                    
+                    <p className="text-white/80 text-sm md:text-base line-clamp-2 font-medium leading-relaxed mb-4 sm:mb-6">
+                      {featuredEvent.description}
+                    </p>
+                  </Link>
 
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-sm text-white/90 font-semibold pt-4 border-t border-white/15">
+                    <span className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                      {featuredEvent.location}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                      {formatDate(featuredDate.date)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex shrink-0 w-full md:w-auto mt-2 md:mt-0">
+                  <Link
+                    to="/join"
+                    className="w-full text-center px-8 py-3.5 rounded-lg border border-transparent bg-[var(--color-primary)] text-white font-bold hover:bg-[#000270] transition-all duration-300 text-sm sm:text-base shadow-lg hover:-translate-y-1"
+                  >
+                    Join the Movement
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

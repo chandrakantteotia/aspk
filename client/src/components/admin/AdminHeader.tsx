@@ -44,7 +44,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ onMenuClick, title = 'Dashboa
 
   return (
     <header className="h-16 shrink-0 flex items-center justify-between px-4 sm:px-6
-      bg-white/80 backdrop-blur-xl border-b border-slate-100/80 sticky top-0 z-30
+      bg-white/80 -xl border-b border-slate-100/80 sticky top-0 z-30
       shadow-[0_1px_0_0_rgba(0,0,0,0.04)]"
     >
       {/* Left */}
@@ -115,7 +115,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ onMenuClick, title = 'Dashboa
                               className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors flex items-center justify-between"
                             >
                               <span>{item.title}</span>
-                              <span className="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{item.type}</span>
+                              <span className="text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded-lg">{item.type}</span>
                             </button>
                           ))}
                         </div>
@@ -146,7 +146,7 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ onMenuClick, title = 'Dashboa
           <Bell size={18} />
           {hasNotif && (
             <motion.span
-              className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500 border-2 border-white"
+              className="absolute top-1.5 right-1.5 -full bg-red-500 border-2 border-white"
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
             />
@@ -165,13 +165,13 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({ onMenuClick, title = 'Dashboa
             <p className="text-[10px] text-slate-400 leading-none">Administrator</p>
           </div>
           <div className="relative">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent text-white flex items-center justify-center font-bold text-sm shadow-sm ring-2 ring-primary/20">
+            <div className="w-9 h-9 rounded-xl  text-white flex items-center justify-center font-bold text-sm shadow-sm ring-2 ring-primary/20">
               {profile?.photoURL
                 ? <img src={profile.photoURL} alt="avatar" className="w-full h-full rounded-xl object-cover" />
                 : initials
               }
             </div>
-            <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white" />
+            <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-lg bg-emerald-400 border-2 border-white" />
           </div>
         </div>
       </div>

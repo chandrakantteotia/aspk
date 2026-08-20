@@ -74,7 +74,7 @@ const DonatePage: React.FC = () => {
     <main className="w-full bg-gray-50 min-h-screen pb-24">
       <section className="bg-white py-24 text-center relative overflow-hidden border-b border-gray-100">
         <div className="container-padded relative z-10 space-y-6 max-w-3xl mx-auto">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-50 text-red-500 mx-auto mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-red-50 text-red-500 mx-auto mb-4">
             <Heart className="w-8 h-8" />
           </div>
           <h1 className="text-5xl md:text-6xl font-display font-bold text-dark tracking-tight">Support the Cause</h1>
@@ -88,7 +88,7 @@ const DonatePage: React.FC = () => {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-12 gap-10">
           
           <div className="lg:col-span-8">
-            <div className="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 md:p-12">
               <AnimatePresence mode="wait">
                 {step === 1 && (
                   <motion.form key="step1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit(onSubmit)} className="space-y-12">
@@ -96,7 +96,7 @@ const DonatePage: React.FC = () => {
                     {/* Amount Selection */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">1</div>
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">1</div>
                         <h3 className="text-2xl font-bold font-display text-dark">Select Amount</h3>
                       </div>
                       <div className="flex flex-wrap gap-4 mb-6">
@@ -105,7 +105,7 @@ const DonatePage: React.FC = () => {
                             type="button"
                             key={amt}
                             onClick={() => handlePresetSelect(amt)}
-                            className={`flex-1 min-w-[120px] py-4 rounded-full font-bold text-lg transition-all border-2 ${selectedPreset === amt ? 'border-primary bg-primary text-white shadow-md' : 'border-gray-200 text-gray-700 bg-white hover:border-primary/50'}`}
+                            className={`flex-1 min-w-[120px] py-4 rounded-lg font-bold text-lg transition-all border-2 ${selectedPreset === amt ? 'border-primary bg-primary text-white shadow-md' : 'border-gray-200 text-gray-700 bg-white hover:border-primary/50'}`}
                           >
                             ₹{amt.toLocaleString()}
                           </button>
@@ -113,7 +113,7 @@ const DonatePage: React.FC = () => {
                       </div>
                       <div className="relative max-w-xs">
                         <span className="absolute left-6 top-1/2 -translate-y-1/2 font-bold text-gray-400 text-lg">₹</span>
-                        <input type="number" placeholder="Custom Amount" value={customAmount} onChange={handleCustomAmountChange} className="w-full pl-12 pr-6 py-4 rounded-full border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none font-bold text-dark text-lg transition-all bg-gray-50 focus:bg-white" />
+                        <input type="number" placeholder="Custom Amount" value={customAmount} onChange={handleCustomAmountChange} className="w-full pl-12 pr-6 py-4 rounded-lg border-2 border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none font-bold text-dark text-lg transition-all bg-gray-50 focus:bg-white" />
                       </div>
                       {errors.amount && <p className="text-red-500 text-sm mt-2">{errors.amount.message}</p>}
                     </div>
@@ -123,7 +123,7 @@ const DonatePage: React.FC = () => {
                     {/* Personal Details */}
                     <div>
                       <div className="flex items-center gap-3 mb-8">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">2</div>
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">2</div>
                         <h3 className="text-2xl font-bold font-display text-dark">Donor Details</h3>
                       </div>
                       <div className="grid md:grid-cols-2 gap-6">
@@ -159,16 +159,16 @@ const DonatePage: React.FC = () => {
                     {/* Payment Method */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">3</div>
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold">3</div>
                         <h3 className="text-2xl font-bold font-display text-dark">Payment Method</h3>
                       </div>
                       <div className="grid grid-cols-2 gap-6">
-                        <label className={`cursor-pointer border-2 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 transition-all ${watchMethod === 'upi' ? 'border-primary bg-primary/5 shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+                        <label className={`cursor-pointer border-2 rounded-xl p-6 flex flex-col items-center justify-center gap-3 transition-all ${watchMethod === 'upi' ? 'border-primary bg-primary/5 shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
                           <input type="radio" value="upi" {...register('method')} className="sr-only" />
                           <Wallet className={`w-8 h-8 ${watchMethod === 'upi' ? 'text-primary' : 'text-gray-400'}`} />
                           <span className={`font-bold ${watchMethod === 'upi' ? 'text-primary' : 'text-gray-700'}`}>UPI / QR</span>
                         </label>
-                        <label className={`cursor-pointer border-2 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 transition-all ${watchMethod === 'bank' ? 'border-primary bg-primary/5 shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+                        <label className={`cursor-pointer border-2 rounded-xl p-6 flex flex-col items-center justify-center gap-3 transition-all ${watchMethod === 'bank' ? 'border-primary bg-primary/5 shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
                           <input type="radio" value="bank" {...register('method')} className="sr-only" />
                           <Building2 className={`w-8 h-8 ${watchMethod === 'bank' ? 'text-primary' : 'text-gray-400'}`} />
                           <span className={`font-bold ${watchMethod === 'bank' ? 'text-primary' : 'text-gray-700'}`}>Bank Transfer</span>
@@ -177,7 +177,7 @@ const DonatePage: React.FC = () => {
                     </div>
 
                     <div className="pt-4">
-                      <button type="submit" className="w-full py-5 bg-primary text-white font-bold rounded-full text-xl hover:bg-primary/90 transition-all shadow-md flex items-center justify-center gap-3 group">
+                      <button type="submit" className="w-full py-5 bg-primary text-white font-bold rounded-lg text-xl hover:bg-primary/90 transition-all shadow-md flex items-center justify-center gap-3 group">
                         Donate ₹{watchAmount?.toLocaleString() || 0}
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                       </button>
@@ -193,19 +193,19 @@ const DonatePage: React.FC = () => {
                   <motion.div key="step2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center py-20 text-center min-h-[500px]">
                     {watchMethod === 'upi' ? (
                       <>
-                        <div className="w-56 h-56 bg-gray-50 border-2 border-dashed border-gray-300 rounded-3xl flex flex-col items-center justify-center mb-8">
+                        <div className="w-56 h-56 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center mb-8">
                           <Wallet className="w-12 h-12 text-gray-300 mb-2" />
                           <span className="text-gray-400 font-bold uppercase tracking-wider text-sm">QR CODE</span>
                         </div>
                         <p className="text-2xl font-bold font-display text-dark mb-3">Scan with any UPI App</p>
-                        <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 px-6 py-3 rounded-full font-mono text-gray-700 font-bold text-lg mb-12">
+                        <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 px-6 py-3 rounded-lg font-mono text-gray-700 font-bold text-lg mb-12">
                           aspk4hapur@upi 
                           <button className="text-gray-400 hover:text-primary transition-colors p-1"><Copy className="w-5 h-5" /></button>
                         </div>
                       </>
                     ) : (
                       <>
-                        <div className="text-left bg-gray-50 p-8 rounded-2xl w-full max-w-md border border-gray-200 mb-12">
+                        <div className="text-left bg-gray-50 p-8 rounded-xl w-full max-w-md border border-gray-200 mb-12">
                           <h4 className="font-bold text-xl font-display text-dark border-b border-gray-200 pb-4 mb-6">Bank Details</h4>
                           <div className="space-y-4">
                             <div className="flex justify-between"><span className="text-gray-500 font-medium">Bank Name</span><span className="font-bold text-dark">State Bank of India</span></div>
@@ -216,8 +216,8 @@ const DonatePage: React.FC = () => {
                         </div>
                       </>
                     )}
-                    <div className="flex items-center gap-4 px-6 py-4 bg-primary/5 text-primary rounded-full font-bold">
-                      <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                    <div className="flex items-center gap-4 px-6 py-4 bg-primary/5 text-primary rounded-lg font-bold">
+                      <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-lg animate-spin" />
                       Waiting for payment confirmation...
                     </div>
                   </motion.div>
@@ -225,17 +225,17 @@ const DonatePage: React.FC = () => {
 
                 {step === 3 && receiptData && (
                   <motion.div key="step3" initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center py-16">
-                    <div className="w-24 h-24 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-8">
+                    <div className="w-24 h-24 bg-success/10 rounded-lg flex items-center justify-center mx-auto mb-8">
                       <CheckCircle2 className="w-12 h-12 text-success" />
                     </div>
                     <h2 className="text-4xl font-display font-bold mb-4 text-dark">Thank You, {receiptData.name}!</h2>
                     <p className="text-gray-500 text-lg mb-10 max-w-md mx-auto">Your generous donation has been received successfully and will make a real impact.</p>
                     
-                    <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 max-w-md mx-auto text-left mb-10 shadow-sm">
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 max-w-md mx-auto text-left mb-10 shadow-sm">
                       <div className="flex justify-between items-end mb-6 border-b border-gray-200 pb-6">
                         <div>
                           <p className="text-sm font-medium text-gray-500 mb-1">Amount Paid</p>
-                          <p className="font-black text-3xl text-dark">₹{receiptData.amount.toLocaleString()}</p>
+                          <p className="font-extrabold text-3xl text-dark">₹{receiptData.amount.toLocaleString()}</p>
                         </div>
                         <div className="text-right">
                           <p className="text-sm font-medium text-gray-500 mb-1">Date</p>
@@ -258,28 +258,28 @@ const DonatePage: React.FC = () => {
           </div>
 
           <div className="lg:col-span-4 space-y-8">
-            <div className="bg-dark text-white rounded-3xl p-10 border border-gray-800 shadow-xl relative overflow-hidden">
+            <div className="bg-dark text-white rounded-xl p-10 border border-gray-800 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-6 opacity-10 pointer-events-none">
                 <Heart className="w-24 h-24" />
               </div>
               <h3 className="text-3xl font-display font-bold mb-8 relative z-10">Why Donate?</h3>
               <ul className="space-y-6 relative z-10">
                 <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
                   <span className="text-gray-300 font-medium leading-relaxed">Fund local development initiatives and grassroots campaigns.</span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
                   <span className="text-gray-300 font-medium leading-relaxed">Support digital infrastructure and public portals.</span>
                 </li>
                 <li className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5 text-warning" /></div>
                   <span className="text-gray-300 font-medium leading-relaxed">Organize community awareness and empowerment seminars.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 border border-gray-200">
+            <div className="bg-white rounded-xl p-8 border border-gray-200">
               <h3 className="font-bold text-dark mb-4 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-primary" /> Legal Notice
               </h3>

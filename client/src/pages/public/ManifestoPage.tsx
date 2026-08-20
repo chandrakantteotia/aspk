@@ -82,7 +82,7 @@ const ManifestoPage: React.FC = () => {
               >
                 <Accordion.Item 
                   value={pillar.id}
-                  className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden"
+                  className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden"
                 >
                   <Accordion.Header>
                     <Accordion.Trigger className="w-full flex items-center justify-between p-8 hover:bg-slate-50 transition-colors group">

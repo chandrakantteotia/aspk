@@ -77,7 +77,7 @@ const MembersPage: React.FC = () => {
             <button
               key={wing}
               onClick={() => setActiveTab(wing)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 activeTab === wing 
                   ? 'bg-dark text-white shadow-button' 
                   : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
@@ -93,7 +93,7 @@ const MembersPage: React.FC = () => {
           <PageLoader className="py-20" />
         ) : filteredMembers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+            <div className="w-16 h-16 bg-slate-100 rounded-lg flex items-center justify-center mb-4">
               <span className="text-2xl">👥</span>
             </div>
             <h3 className="text-xl font-bold text-dark font-display mb-2">No members found</h3>
@@ -110,7 +110,7 @@ const MembersPage: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: i * 0.05, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-100 group hover:shadow-premium transition-all duration-300 flex flex-col hover:-translate-y-1"
+                  className="bg-white rounded-xl overflow-hidden shadow-card border border-slate-100 group hover:shadow-premium transition-all duration-300 flex flex-col hover:-translate-y-1"
                 >
                   <div className="relative aspect-square overflow-hidden bg-slate-50">
                     <img 
@@ -122,7 +122,7 @@ const MembersPage: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-dark/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <div className="p-5 flex-1 flex flex-col relative bg-white">
-                    <div className={`absolute -top-4 right-4 px-3 py-1 rounded-full text-[10px] font-bold shadow-sm ring-2 ring-white ${getWingColor(member.wing)}`}>
+                    <div className={`absolute -top-4 right-4 px-3 py-1 rounded-lg text-[10px] font-bold shadow-sm ring-2 ring-white ${getWingColor(member.wing)}`}>
                       {member.wing}
                     </div>
                     
@@ -133,16 +133,16 @@ const MembersPage: React.FC = () => {
                     
                     <div className="flex items-center gap-2 mt-auto pt-4 border-t border-slate-100">
                       {member.socials?.twitter && (
-                        <a href={member.socials.twitter} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#1DA1F2] hover:bg-[#1DA1F2]/10 transition-colors"><Twitter className="w-3.5 h-3.5" /></a>
+                        <a href={member.socials.twitter} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#1DA1F2] hover:bg-[#1DA1F2]/10 transition-colors"><Twitter className="w-3.5 h-3.5" /></a>
                       )}
                       {member.socials?.facebook && (
-                        <a href={member.socials.facebook} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#4267B2] hover:bg-[#4267B2]/10 transition-colors"><Facebook className="w-3.5 h-3.5" /></a>
+                        <a href={member.socials.facebook} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#4267B2] hover:bg-[#4267B2]/10 transition-colors"><Facebook className="w-3.5 h-3.5" /></a>
                       )}
                       {member.socials?.instagram && (
-                        <a href={member.socials.instagram} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#E1306C] hover:bg-[#E1306C]/10 transition-colors"><Instagram className="w-3.5 h-3.5" /></a>
+                        <a href={member.socials.instagram} target="_blank" rel="noreferrer" className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-[#E1306C] hover:bg-[#E1306C]/10 transition-colors"><Instagram className="w-3.5 h-3.5" /></a>
                       )}
                       {member.socials?.email && (
-                        <a href={`mailto:${member.socials.email}`} className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-dark hover:bg-slate-200 transition-colors"><Mail className="w-3.5 h-3.5" /></a>
+                        <a href={`mailto:${member.socials.email}`} className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 hover:text-dark hover:bg-slate-200 transition-colors"><Mail className="w-3.5 h-3.5" /></a>
                       )}
                     </div>
                   </div>

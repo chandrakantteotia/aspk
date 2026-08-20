@@ -7,10 +7,10 @@ import { getCollection, COLLECTIONS, where, orderBy, limit } from '@/firebase/fi
 import { firebaseServicesEnabled } from '@/firebase/config';
 import type { NewsArticle } from '@/types';
 import { formatDate, truncate } from '@/lib/utils';
-import gallery1 from '@/images/gallery-1.jpg';
-import gallery2 from '@/images/gallery-2.jpg';
-import gallery3 from '@/images/gallery-3.jpg';
-import gallery4 from '@/images/gallery-4.jpg';
+import gallery1 from '@/images/gallery-1.jpeg';
+import gallery2 from '@/images/gallery-2.jpeg';
+import gallery3 from '@/images/gallery-3.jpeg';
+import gallery4 from '@/images/gallery-4.jpeg';
 
 const fallbackNews: NewsArticle[] = [
   {
@@ -87,15 +87,15 @@ function FeaturedNewsCard({ article }: { article: NewsArticle }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group grid md:grid-cols-2 gap-8 items-center bg-white rounded-[2rem] p-4 pr-8 shadow-card border border-border/50 mb-12 hover:shadow-premium transition-all duration-300"
+      className="group grid md:grid-cols-2 gap-8 items-center bg-white rounded-xl p-4 pr-8 shadow-card border border-border/50 mb-12 hover:shadow-premium transition-all duration-300"
     >
-      <div className="relative aspect-[4/3] md:aspect-square overflow-hidden rounded-3xl">
+      <div className="relative aspect-[4/3] md:aspect-square overflow-hidden rounded-xl">
         <img
           src={article.imageUrl}
           alt={article.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
-        <div className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[11px] font-bold uppercase tracking-widest text-primary">
+        <div className="absolute top-4 left-4 px-3 py-1 bg-white/90  rounded-full text-[11px] font-bold uppercase tracking-widest text-primary">
           {article.category}
         </div>
       </div>
@@ -133,7 +133,7 @@ function SmallNewsCard({ article, index }: { article: NewsArticle; index: number
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm border border-border/50 hover:shadow-card hover:-translate-y-1 transition-all duration-300"
+      className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm border border-border/50 hover:shadow-card hover:-translate-y-1 transition-all duration-300"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
@@ -141,7 +141,7 @@ function SmallNewsCard({ article, index }: { article: NewsArticle; index: number
           alt={article.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute top-3 left-3 px-2 py-1 bg-white/90 backdrop-blur-sm rounded-md text-[10px] font-bold uppercase tracking-widest text-dark">
+        <div className="absolute top-3 left-3 px-2 py-1 bg-white/90  rounded-md text-[10px] font-bold uppercase tracking-widest text-dark">
           {article.category}
         </div>
       </div>
@@ -193,9 +193,9 @@ export default function NewsSection() {
 
         {isLoading ? (
           <div className="animate-pulse space-y-12">
-            <div className="h-[400px] bg-gray-100 rounded-[2rem]" />
+            <div className="h-[400px] bg-gray-100 rounded-xl" />
             <div className="grid md:grid-cols-3 gap-6">
-              {[1, 2, 3].map(i => <div key={i} className="h-64 bg-gray-100 rounded-2xl" />)}
+              {[1, 2, 3].map(i => <div key={i} className="h-64 bg-gray-100 rounded-xl" />)}
             </div>
           </div>
         ) : (

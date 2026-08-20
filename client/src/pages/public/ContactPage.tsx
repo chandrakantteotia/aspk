@@ -51,19 +51,19 @@ const ContactPage: React.FC = () => {
       </section>
 
       <section className="container-padded py-20">
-        <div className="max-w-6xl mx-auto bg-white rounded-[2rem] shadow-card overflow-hidden flex flex-col lg:flex-row border border-slate-100 relative z-20 -mt-10 lg:-mt-20">
+        <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-card overflow-hidden flex flex-col lg:flex-row border border-slate-100 relative z-20 -mt-10 lg:-mt-20">
           
           {/* Info Side */}
           <div className="lg:w-2/5 bg-dark text-white p-10 md:p-14 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-lg blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-lg blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
             
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-10 text-white">Get in Touch</h2>
               
               <div className="space-y-10">
                 <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
+                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
                     <MapPin className="w-6 h-6 text-white" strokeWidth={1.5} />
                   </div>
                   <div>
@@ -73,7 +73,7 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
+                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
                     <Phone className="w-6 h-6 text-white" strokeWidth={1.5} />
                   </div>
                   <div>
@@ -84,7 +84,7 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start gap-6 group">
-                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
+                  <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors">
                     <Mail className="w-6 h-6 text-white" strokeWidth={1.5} />
                   </div>
                   <div>
@@ -99,9 +99,9 @@ const ContactPage: React.FC = () => {
             <div className="relative z-10 mt-16 pt-8 border-t border-white/10">
               <h4 className="font-bold text-white/50 mb-6 text-xs uppercase tracking-widest">Connect with us</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Twitter className="w-5 h-5" /></a>
-                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Facebook className="w-5 h-5" /></a>
-                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Instagram className="w-5 h-5" /></a>
+                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Twitter className="w-5 h-5" /></a>
+                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Facebook className="w-5 h-5" /></a>
+                <a href="#" className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white hover:text-dark transition-all duration-300"><Instagram className="w-5 h-5" /></a>
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@ const ContactPage: React.FC = () => {
 
       {/* Map Embed */}
       <section className="container-padded pb-20 md:pb-28">
-        <div className="w-full h-[500px] bg-slate-100 rounded-[2rem] overflow-hidden border border-slate-200 relative group">
+        <div className="w-full h-[500px] bg-slate-100 rounded-xl overflow-hidden border border-slate-200 relative group">
            <iframe 
             src="about:blank" 
             title="Google Maps Location"
@@ -161,7 +161,7 @@ const ContactPage: React.FC = () => {
             loading="lazy"
           />
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="bg-white/95 backdrop-blur-sm px-8 py-4 rounded-2xl text-dark font-display font-bold shadow-card border border-slate-100 flex items-center gap-3">
+            <div className="bg-white/95  px-8 py-4 rounded-xl text-dark font-display font-bold shadow-card border border-slate-100 flex items-center gap-3">
               <MapPin className="w-5 h-5 text-primary" />
               Hapur District, UP
             </div>

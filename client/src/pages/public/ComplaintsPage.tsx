@@ -129,7 +129,7 @@ const ComplaintsPage: React.FC = () => {
     <main className="w-full bg-gray-50 min-h-screen pb-24">
       <section className="bg-white py-24 text-center relative overflow-hidden border-b border-gray-100">
         <div className="container-padded relative z-10 space-y-6 max-w-3xl mx-auto">
-          <span className="font-bold tracking-widest uppercase text-sm text-warning bg-warning/10 px-4 py-2 rounded-full inline-block">Grievance Redressal</span>
+          <span className="font-bold tracking-widest uppercase text-sm text-warning bg-warning/10 px-4 py-2 rounded-lg inline-block">Grievance Redressal</span>
           <h1 className="text-5xl md:text-6xl font-display font-bold text-dark tracking-tight">Public Complaints Portal</h1>
           <p className="text-gray-500 text-xl leading-relaxed">
             Report local issues directly to us. We ensure timely action and complete transparency.
@@ -140,16 +140,16 @@ const ComplaintsPage: React.FC = () => {
       <section className="container-padded py-16 -mt-8 relative z-20">
         <div className="max-w-4xl mx-auto">
           {/* Tabs */}
-          <div className="flex bg-white p-2 rounded-full border border-gray-200 shadow-sm max-w-md mx-auto mb-12">
+          <div className="flex bg-white p-2 rounded-lg border border-gray-200 shadow-sm max-w-md mx-auto mb-12">
             <button
               onClick={() => { setActiveTab('submit'); setSuccessId(null); setTrackedStatus(null); }}
-              className={`flex-1 py-4 text-base font-bold rounded-full transition-all ${activeTab === 'submit' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:text-dark hover:bg-gray-50'}`}
+              className={`flex-1 py-4 text-base font-bold rounded-lg transition-all ${activeTab === 'submit' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:text-dark hover:bg-gray-50'}`}
             >
               Submit Complaint
             </button>
             <button
               onClick={() => { setActiveTab('track'); setSuccessId(null); }}
-              className={`flex-1 py-4 text-base font-bold rounded-full transition-all ${activeTab === 'track' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:text-dark hover:bg-gray-50'}`}
+              className={`flex-1 py-4 text-base font-bold rounded-lg transition-all ${activeTab === 'track' ? 'bg-primary text-white shadow-md' : 'text-gray-500 hover:text-dark hover:bg-gray-50'}`}
             >
               Track Status
             </button>
@@ -157,7 +157,7 @@ const ComplaintsPage: React.FC = () => {
 
           <AnimatePresence mode="wait">
             {activeTab === 'submit' && !successId && (
-              <motion.div key="submit" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="bg-white p-10 md:p-14 rounded-[2rem] shadow-sm border border-gray-200">
+              <motion.div key="submit" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="bg-white p-10 md:p-14 rounded-xl shadow-sm border border-gray-200">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
@@ -207,7 +207,7 @@ const ComplaintsPage: React.FC = () => {
                   </div>
                   
                   <div className="pt-4">
-                    <button type="submit" disabled={isSubmitting} className="w-full py-5 bg-warning text-dark font-bold text-xl rounded-full hover:bg-yellow-400 transition-colors shadow-md flex justify-center items-center">
+                    <button type="submit" disabled={isSubmitting} className="w-full py-5 bg-warning text-dark font-bold text-xl rounded-lg hover:bg-yellow-400 transition-colors shadow-md flex justify-center items-center">
                       {isSubmitting ? <span className="animate-pulse">Submitting...</span> : 'Submit Grievance'}
                     </button>
                   </div>
@@ -216,17 +216,17 @@ const ComplaintsPage: React.FC = () => {
             )}
 
             {activeTab === 'submit' && successId && (
-              <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white p-14 rounded-[2rem] shadow-sm border border-gray-200 text-center">
-                <div className="w-24 h-24 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-8">
+              <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="bg-white p-14 rounded-xl shadow-sm border border-gray-200 text-center">
+                <div className="w-24 h-24 bg-success/10 rounded-lg flex items-center justify-center mx-auto mb-8">
                   <CheckCircle2 className="w-12 h-12 text-success" />
                 </div>
                 <h3 className="text-4xl font-display font-bold text-dark mb-4">Complaint Registered</h3>
                 <p className="text-gray-500 text-lg mb-8 max-w-md mx-auto">Your complaint has been successfully recorded. Please save this ID to track its status.</p>
-                <div className="bg-gray-50 border border-gray-200 py-4 px-8 rounded-2xl text-3xl font-mono font-bold tracking-widest text-dark mb-10 inline-block">
+                <div className="bg-gray-50 border border-gray-200 py-4 px-8 rounded-xl text-3xl font-mono font-bold tracking-widest text-dark mb-10 inline-block">
                   {successId}
                 </div>
                 <div>
-                  <button onClick={() => { setSuccessId(null); setActiveTab('track'); setTrackId(successId); handleTrack({preventDefault:()=> {}} as any); }} className="px-8 py-4 bg-primary/10 text-primary font-bold rounded-full hover:bg-primary/20 transition-colors text-lg">
+                  <button onClick={() => { setSuccessId(null); setActiveTab('track'); setTrackId(successId); handleTrack({preventDefault:()=> {}} as any); }} className="px-8 py-4 bg-primary/10 text-primary font-bold rounded-lg hover:bg-primary/20 transition-colors text-lg">
                     Track this complaint now
                   </button>
                 </div>
@@ -235,25 +235,25 @@ const ComplaintsPage: React.FC = () => {
 
             {activeTab === 'track' && (
               <motion.div key="track" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-10">
-                <form onSubmit={handleTrack} className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-200 flex flex-col md:flex-row gap-6">
+                <form onSubmit={handleTrack} className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 flex flex-col md:flex-row gap-6">
                   <div className="relative flex-1">
                     <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
-                    <input type="text" required value={trackId} onChange={e => setTrackId(e.target.value)} placeholder="Enter Complaint ID (e.g. C-123456)" className="w-full pl-16 pr-6 py-5 rounded-full border-2 border-gray-200 focus:border-primary bg-gray-50 focus:bg-white outline-none text-lg transition-all font-mono font-medium" />
+                    <input type="text" required value={trackId} onChange={e => setTrackId(e.target.value)} placeholder="Enter Complaint ID (e.g. C-123456)" className="w-full pl-16 pr-6 py-5 rounded-lg border-2 border-gray-200 focus:border-primary bg-gray-50 focus:bg-white outline-none text-lg transition-all font-mono font-medium" />
                   </div>
-                  <button type="submit" disabled={isTracking} className="px-10 py-5 bg-primary text-white text-lg font-bold rounded-full hover:bg-primary/90 transition-colors shadow-md md:w-auto w-full">
+                  <button type="submit" disabled={isTracking} className="px-10 py-5 bg-primary text-white text-lg font-bold rounded-lg hover:bg-primary/90 transition-colors shadow-md md:w-auto w-full">
                     {isTracking ? 'Searching...' : 'Track'}
                   </button>
                 </form>
 
                 {trackedStatus && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white p-10 md:p-12 rounded-[2rem] shadow-sm border border-gray-200">
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white p-10 md:p-12 rounded-xl shadow-sm border border-gray-200">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 border-b border-gray-100 pb-8 gap-4">
                       <div>
                         <p className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">Complaint ID</p>
-                        <p className="text-3xl font-black font-mono text-dark">{trackedStatus.complaintId}</p>
+                        <p className="text-3xl font-extrabold font-mono text-dark">{trackedStatus.complaintId}</p>
                       </div>
                       <div>
-                        <span className={`px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider ${trackedStatus.status === 'filed' ? 'bg-gray-100 text-gray-700' : trackedStatus.status === 'in-progress' ? 'bg-blue-100 text-primary' : 'bg-success/15 text-success'}`}>
+                        <span className={`px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider ${trackedStatus.status === 'filed' ? 'bg-gray-100 text-gray-700' : trackedStatus.status === 'in-progress' ? 'bg-blue-100 text-primary' : 'bg-success/15 text-success'}`}>
                           {trackedStatus.status.replace('-', ' ')}
                         </span>
                       </div>
@@ -261,10 +261,10 @@ const ComplaintsPage: React.FC = () => {
                     
                     {/* Timeline */}
                     <div className="relative pl-8 space-y-12">
-                      <div className="absolute left-[1.125rem] top-4 bottom-4 w-1 bg-gray-100 rounded-full" />
+                      <div className="absolute left-[1.125rem] top-4 bottom-4 w-1 bg-gray-100 rounded-lg" />
                       
                       <div className="relative z-10 flex items-start gap-6">
-                        <div className="w-10 h-10 rounded-full bg-success flex items-center justify-center border-4 border-white shadow-sm shrink-0"><CheckCircle2 className="w-5 h-5 text-white" /></div>
+                        <div className="w-10 h-10 rounded-lg bg-success flex items-center justify-center border-4 border-white shadow-sm shrink-0"><CheckCircle2 className="w-5 h-5 text-white" /></div>
                         <div>
                           <h4 className="text-lg font-bold text-dark mb-1">Complaint Filed</h4>
                           <p className="text-gray-500 font-medium">{new Date(trackedStatus.createdAt).toLocaleString()}</p>
@@ -272,8 +272,8 @@ const ComplaintsPage: React.FC = () => {
                       </div>
                       
                       <div className="relative z-10 flex items-start gap-6">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-white shadow-sm shrink-0 ${trackedStatus.status !== 'filed' ? 'bg-primary' : 'bg-gray-200'}`}>
-                          {trackedStatus.status !== 'filed' ? <Clock className="w-5 h-5 text-white" /> : <div className="w-3 h-3 rounded-full bg-white" />}
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center border-4 border-white shadow-sm shrink-0 ${trackedStatus.status !== 'filed' ? 'bg-primary' : 'bg-gray-200'}`}>
+                          {trackedStatus.status !== 'filed' ? <Clock className="w-5 h-5 text-white" /> : <div className="-full bg-white" />}
                         </div>
                         <div>
                           <h4 className={`text-lg font-bold mb-1 ${trackedStatus.status !== 'filed' ? 'text-dark' : 'text-gray-400'}`}>Under Review</h4>
@@ -282,8 +282,8 @@ const ComplaintsPage: React.FC = () => {
                       </div>
                       
                       <div className="relative z-10 flex items-start gap-6">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-white shadow-sm shrink-0 ${trackedStatus.status === 'resolved' ? 'bg-success' : 'bg-gray-200'}`}>
-                           {trackedStatus.status === 'resolved' ? <CheckCircle2 className="w-5 h-5 text-white" /> : <div className="w-3 h-3 rounded-full bg-white" />}
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center border-4 border-white shadow-sm shrink-0 ${trackedStatus.status === 'resolved' ? 'bg-success' : 'bg-gray-200'}`}>
+                           {trackedStatus.status === 'resolved' ? <CheckCircle2 className="w-5 h-5 text-white" /> : <div className="-full bg-white" />}
                         </div>
                         <div>
                           <h4 className={`text-lg font-bold ${trackedStatus.status === 'resolved' ? 'text-dark' : 'text-gray-400'}`}>Resolved</h4>

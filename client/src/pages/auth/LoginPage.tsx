@@ -110,8 +110,8 @@ const LoginPage: React.FC = () => {
     <div className="min-h-screen flex">
       {/* Left brand panel */}
       <div className="hidden lg:flex w-1/2 bg-[#0a0f1e] text-white p-12 flex-col justify-between relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-lg blur-[100px] -translate-y-1/2 translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/20 rounded-lg blur-[100px] translate-y-1/3 -translate-x-1/3" />
         <div className="relative z-10 flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg">
             <Shield size={20} className="text-white" />
@@ -135,7 +135,7 @@ const LoginPage: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="w-full max-w-md bg-white p-8 rounded-2xl shadow-card border border-slate-100"
+          className="w-full max-w-md bg-white p-8 rounded-xl shadow-card border border-slate-100"
         >
           <div className="mb-8">
             <h2 className="text-2xl font-display font-bold text-slate-800">Sign In</h2>

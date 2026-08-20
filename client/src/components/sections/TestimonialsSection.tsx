@@ -108,14 +108,14 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-3">
             <button 
               onClick={prevSlide}
-              className="w-12 h-12 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/30 transition-colors"
+              className="w-12 h-12 bg-white rounded-lg shadow-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/30 transition-colors"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button 
               onClick={nextSlide}
-              className="w-12 h-12 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/30 transition-colors"
+              className="w-12 h-12 bg-white rounded-lg shadow-sm border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/30 transition-colors"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-6 h-6" />
@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex-shrink-0"
                   >
-                    <div className="bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow">
+                    <div className="bg-white p-8 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-shadow">
                       <div className="text-5xl font-serif text-[var(--color-gold)] opacity-40 leading-none mb-2">"</div>
                       
                       <blockquote className="flex-1 text-[13.5px] text-slate-600 leading-relaxed font-medium mb-4 line-clamp-4">
@@ -153,13 +153,13 @@ export default function TestimonialsSection() {
                         <img
                           src={t.photo}
                           alt={t.name}
-                          className="w-10 h-10 rounded-full object-cover shadow-sm"
+                          className="w-10 h-10 rounded-lg object-cover shadow-sm"
                         />
                         <div>
                           <div className="font-display font-bold text-slate-900 text-[13px]">{t.name}</div>
                           <div className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
                             <span className="truncate max-w-[100px]">{t.role}</span>
-                            <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                            <span className="-full bg-slate-300 shrink-0" />
                             <span className="text-[9px] font-bold uppercase tracking-wider text-primary shrink-0">{t.badge}</span>
                           </div>
                         </div>

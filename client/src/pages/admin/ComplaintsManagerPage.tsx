@@ -67,14 +67,14 @@ const DetailModal: React.FC<DetailModalProps> = ({ complaint, onClose, onStatusC
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <motion.div
-        className="absolute inset-0 bg-dark/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-dark/50 "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       />
       <motion.div
-        className="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-hidden flex flex-col"
+        className="relative bg-white rounded-xl shadow-lg w-full max-w-xl max-h-[90vh] overflow-hidden flex flex-col"
         initial={{ scale: 0.92, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.92, opacity: 0, y: 20 }}
@@ -87,12 +87,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ complaint, onClose, onStatusC
               <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 #{complaint.complaintId}
               </span>
-              <span className={cn('inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold border', cfg.bg, cfg.color)}>
+              <span className={cn('inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-semibold border', cfg.bg, cfg.color)}>
                 <cfg.icon size={10} />
                 {cfg.label}
               </span>
               <span className={cn('flex items-center gap-1 text-xs font-semibold', pCfg.color)}>
-                <span className={cn('w-1.5 h-1.5 rounded-full', pCfg.dot)} />
+                <span className={cn('w-1.5 h-1.5 rounded-lg', pCfg.dot)} />
                 {complaint.priority}
               </span>
             </div>
@@ -316,7 +316,7 @@ const ComplaintsManagerPage: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           {loading ? (
             <div className="flex flex-col items-center justify-center h-56 gap-3">
@@ -325,7 +325,7 @@ const ComplaintsManagerPage: React.FC = () => {
             </div>
           ) : filtered.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-56 gap-3">
-              <div className="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center">
+              <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center">
                 <MessageSquare className="text-slate-300" size={26} />
               </div>
               <p className="text-sm text-slate-400 font-medium">
@@ -366,14 +366,14 @@ const ComplaintsManagerPage: React.FC = () => {
                       <td className="py-3.5 px-4 text-sm text-slate-500">{c.district || '—'}</td>
                       <td className="py-3.5 px-4">
                         <span className={cn('flex items-center gap-1.5 text-xs font-bold', pCfg.color)}>
-                          <span className={cn('w-1.5 h-1.5 rounded-full', pCfg.dot)} />
+                          <span className={cn('w-1.5 h-1.5 rounded-lg', pCfg.dot)} />
                           {c.priority}
                         </span>
                       </td>
                       <td className="py-3.5 px-4 text-xs text-slate-400 whitespace-nowrap">{fmtDate(c.createdAt)}</td>
                       <td className="py-3.5 px-4">
                         <span className={cn(
-                          'inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold border',
+                          'inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold border',
                           sCfg.bg, sCfg.color
                         )}>
                           <sCfg.icon size={10} />

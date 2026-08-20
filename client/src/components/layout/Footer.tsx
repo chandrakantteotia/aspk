@@ -49,8 +49,8 @@ export default function Footer() {
           <div className="lg:col-span-5 pr-0 lg:pr-12">
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img src={footerLogo} alt="ASPK4Hapur Logo" className="h-9 sm:h-11 w-11 object-contain shrink-0" />
-              <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-[#0004A3]">
-                ASPK<span className="text-slate-800 font-serif italic ml-0.5">4HAPUR</span>
+              <span className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-[var(--color-primary)]">
+                आजाद समाज पार्टी (काशीराम)
               </span>
             </Link>
             <p className="font-serif italic text-slate-600 text-base md:text-lg mb-8 leading-relaxed">
@@ -65,7 +65,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[#0004A3] hover:text-white hover:border-[#0004A3] transition-colors shadow-sm"
+                  className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-[var(--color-primary)] hover:text-white hover:border-[var(--color-primary)] transition-colors shadow-sm"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -73,16 +73,16 @@ export default function Footer() {
             </div>
 
             <div className="space-y-3">
-              <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[#0004A3] transition-colors font-medium">
-                <Phone className="w-4 h-4 text-[#0004A3]" />
+              <a href="tel:+91XXXXXXXXXX" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[var(--color-primary)] transition-colors font-medium">
+                <Phone className="w-4 h-4 text-[var(--color-primary)]" />
                 +91 XXXX-XXX-XXX
               </a>
-              <a href="mailto:contact@aspk4hapur.in" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[#0004A3] transition-colors font-medium">
-                <Mail className="w-4 h-4 text-[#0004A3]" />
+              <a href="mailto:contact@aspk4hapur.in" className="flex items-center gap-3 text-sm text-slate-600 hover:text-[var(--color-primary)] transition-colors font-medium">
+                <Mail className="w-4 h-4 text-[var(--color-primary)]" />
                 contact@aspk4hapur.in
               </a>
               <div className="flex items-center gap-3 text-sm text-slate-600 font-medium">
-                <MapPin className="w-4 h-4 text-[#0004A3]" />
+                <MapPin className="w-4 h-4 text-[var(--color-primary)]" />
                 Hapur, Uttar Pradesh, India
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function Footer() {
             <ul className="space-y-3.5">
               {footerLinks.party.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -107,7 +107,7 @@ export default function Footer() {
             <ul className="space-y-3.5">
               {footerLinks.engage.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -120,7 +120,7 @@ export default function Footer() {
             <ul className="space-y-3.5">
               {footerLinks.resources.map(link => (
                 <li key={link.href}>
-                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[#0004A3] transition-colors">
+                  <Link to={link.href} className="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors">
                     {link.label}
                   </Link>
                 </li>

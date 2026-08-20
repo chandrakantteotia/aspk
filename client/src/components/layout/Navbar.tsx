@@ -12,7 +12,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { signOut } from '@/firebase/auth';
 import { cn } from '@/lib/utils';
 import toast from 'react-hot-toast';
-import LanguageSwitcher from '@/components/shared/LanguageSwitcher';
 
 const navLinks = [
   { label: 'Home', path: '/', icon: Home },
@@ -105,7 +104,7 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         isSolidHeader
-          ? "bg-[#0004A3] shadow-lg border-b border-blue-900/40"
+          ? "bg-[var(--color-primary)] shadow-lg border-b border-blue-900/40"
           : "bg-gradient-to-b from-black/75 via-black/40 to-transparent"
       )}
     >
@@ -113,7 +112,7 @@ export default function Navbar() {
       <div
         className={cn(
           "text-white text-xs py-1.5 transition-colors duration-300",
-          isSolidHeader ? "bg-[#0004A3]" : "bg-transparent"
+          isSolidHeader ? "bg-[var(--color-primary)]" : "bg-transparent"
         )}
       >
         <div className="container-padded flex items-center justify-end gap-3 sm:gap-5 text-[12px] sm:text-[12.5px] font-medium">
@@ -135,16 +134,13 @@ export default function Navbar() {
 
           <Link
             to="/donate"
-            className="flex items-center gap-1 bg-white hover:bg-white/90 text-[#0004A3] font-bold px-3 py-1 rounded-full text-[11.5px] transition-all shadow-sm"
+            className="flex items-center gap-1 bg-white hover:bg-white/90 text-[var(--color-primary)] font-bold px-3 py-1 rounded-lg text-[11.5px] transition-all shadow-sm"
           >
-            <Heart className="w-3.5 h-3.5 fill-[#0004A3] text-[#0004A3]" />
+            <Heart className="w-3.5 h-3.5 fill-[var(--color-primary)] text-[var(--color-primary)]" />
             <span>Donate Now</span>
           </Link>
 
-          {/* Language Switcher in top header section after Donate button */}
-          <div className="pl-1 border-l border-white/20">
-            <LanguageSwitcher compact variant="dark" />
-          </div>
+          {/* Language Switcher removed as per user request */}
         </div>
       </div>
 
@@ -152,7 +148,7 @@ export default function Navbar() {
       <nav
         className={cn(
           "text-white py-2.5 transition-colors duration-300",
-          isSolidHeader ? "bg-[#0004A3]" : "bg-transparent"
+          isSolidHeader ? "bg-[var(--color-primary)]" : "bg-transparent"
         )}
         role="navigation"
         aria-label="Main navigation"
@@ -176,8 +172,8 @@ export default function Navbar() {
                   alt="ASPK4Hapur Mobile Logo"
                   className="h-8 w-auto max-h-9 object-contain shrink-0 filter drop-shadow-md"
                 />
-                <span className="font-display font-black text-lg tracking-tight text-white drop-shadow-sm">
-                  ASPK4HAPUR
+                <span className="font-display font-extrabold text-lg tracking-tight text-white drop-shadow-sm">
+                 आजाद समाज पार्टी (काशीराम)
                 </span>
               </div>
             </Link>
@@ -216,12 +212,12 @@ export default function Navbar() {
                             exit={{ opacity: 0, y: 6, scale: 0.98 }}
                             transition={{ duration: 0.15, ease: 'easeOut' }}
                             className={cn(
-                              "absolute top-full mt-2.5 bg-white/95 backdrop-blur-xl text-slate-900 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden",
+                              "absolute top-full mt-2.5 bg-white/95 -xl text-slate-900 rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden",
                               link.label === 'Citizens' ? "right-0 w-[300px] sm:w-[330px]" : "left-0 w-60"
                             )}
                           >
                             {/* Top Accent Strip */}
-                            <div className="h-0.5 w-full bg-[#0004A3]" />
+                            <div className="h-0.5 w-full bg-[var(--color-primary)]" />
 
                             <div className="p-1.5 flex flex-col gap-0.5">
                               {link.children.map((child) => (
@@ -230,11 +226,11 @@ export default function Navbar() {
                                   to={child.path}
                                   className="group flex items-center gap-2.5 px-3 py-2 rounded-lg hover:bg-blue-50/70 transition-all duration-150"
                                 >
-                                  <div className="w-7 h-7 rounded-md bg-[#0004A3]/10 flex items-center justify-center shrink-0 group-hover:bg-[#0004A3] transition-colors">
-                                    <child.icon className="w-3.5 h-3.5 text-[#0004A3] group-hover:text-white transition-colors" />
+                                  <div className="w-7 h-7 rounded-md bg-[var(--color-primary)]/10 flex items-center justify-center shrink-0 group-hover:bg-[var(--color-primary)] transition-colors">
+                                    <child.icon className="w-3.5 h-3.5 text-[var(--color-primary)] group-hover:text-white transition-colors" />
                                   </div>
                                   <div className="flex flex-col min-w-0">
-                                    <span className="text-[13px] font-semibold text-slate-800 leading-tight group-hover:text-[#0004A3] transition-colors">{child.label}</span>
+                                    <span className="text-[13px] font-semibold text-slate-800 leading-tight group-hover:text-[var(--color-primary)] transition-colors">{child.label}</span>
                                     <span className="text-[10.5px] text-slate-400 truncate leading-tight mt-0.5">{child.description}</span>
                                   </div>
                                 </Link>
@@ -244,7 +240,7 @@ export default function Navbar() {
                             <div className="border-t border-slate-100 bg-slate-50/70 px-3.5 py-2 flex items-center justify-between">
                               <Link
                                 to={link.label === 'Citizens' ? '/join' : '/news'}
-                                className="text-[11.5px] font-bold text-[#0004A3] hover:underline flex items-center gap-1"
+                                className="text-[11.5px] font-bold text-[var(--color-primary)] hover:underline flex items-center gap-1"
                               >
                                 View all <span aria-hidden="true">&rarr;</span>
                               </Link>
@@ -271,7 +267,7 @@ export default function Navbar() {
                         {isActive && (
                           <motion.span
                             layoutId="nav-dot"
-                            className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-yellow-300"
+                            className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 -full bg-yellow-300"
                           />
                         )}
                       </>
@@ -295,17 +291,17 @@ export default function Navbar() {
                 >
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-full hover:bg-white/10 transition-all duration-200 text-white"
+                    className="flex items-center gap-2 pl-1 pr-2.5 py-1 rounded-lg hover:bg-white/10 transition-all duration-200 text-white"
                     aria-label="User menu"
                   >
                     {user.photoURL ? (
                       <img
                         src={user.photoURL}
-                        className="w-7 h-7 rounded-full object-cover"
+                        className="w-7 h-7 rounded-lg object-cover"
                         alt={user.displayName ?? ''}
                       />
                     ) : (
-                      <div className="w-7 h-7 rounded-full bg-white text-primary flex items-center justify-center text-[11px] font-bold">
+                      <div className="w-7 h-7 rounded-lg bg-white text-primary flex items-center justify-center text-[11px] font-bold">
                         {(user.displayName?.[0] ?? user.email?.[0] ?? 'U').toUpperCase()}
                       </div>
                     )}
@@ -322,21 +318,21 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 6, scale: 0.98 }}
                         transition={{ duration: 0.15, ease: 'easeOut' }}
-                        className="absolute right-0 top-full mt-2.5 w-56 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden"
+                        className="absolute right-0 top-full mt-2.5 w-56 bg-white/95 -xl rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden"
                       >
                         {/* Top Accent Strip */}
-                        <div className="h-0.5 w-full bg-[#0004A3]" />
+                        <div className="h-0.5 w-full bg-[var(--color-primary)]" />
 
                         {/* User info */}
                         <div className="px-3.5 pt-3 pb-2.5 border-b border-slate-100 flex items-center gap-2.5">
                           {user.photoURL ? (
                             <img
                               src={user.photoURL}
-                              className="w-8 h-8 rounded-full object-cover shadow-sm shrink-0"
+                              className="w-8 h-8 rounded-lg object-cover shadow-sm shrink-0"
                               alt={user.displayName ?? ''}
                             />
                           ) : (
-                            <div className="w-8 h-8 rounded-full bg-[#0004A3] flex items-center justify-center text-white text-[12px] font-bold shrink-0">
+                            <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)] flex items-center justify-center text-white text-[12px] font-bold shrink-0">
                               {(user.displayName?.[0] ?? user.email?.[0] ?? 'U').toUpperCase()}
                             </div>
                           )}
@@ -392,7 +388,7 @@ export default function Navbar() {
               {/* Join CTA */}
               <Link
                 to="/join"
-                className="hidden sm:flex items-center px-4 py-2 rounded-full text-[13.5px] font-bold bg-white text-[#0004A3] hover:bg-white/90 shadow-md transition-all ml-1"
+                className="hidden sm:flex items-center px-4 py-2 rounded-lg text-[13.5px] font-bold bg-white text-[var(--color-primary)] hover:bg-white/90 shadow-md transition-all ml-1"
               >
                 Join Us
               </Link>
@@ -428,7 +424,7 @@ export default function Navbar() {
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/30 backdrop-blur-[2px] lg:hidden"
+              className="fixed inset-0 z-40 bg-black/30 -[2px] lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
 
@@ -438,10 +434,10 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="fixed right-0 top-0 bottom-0 z-50 w-full bg-white lg:hidden flex flex-col shadow-2xl"
+              className="fixed right-0 top-0 bottom-0 z-50 w-full bg-white lg:hidden flex flex-col shadow-lg"
             >
               {/* Drawer header */}
-              <div className="flex items-center justify-between px-5 py-4 bg-[#0004A3] text-white border-b border-blue-900/30 shrink-0">
+              <div className="flex items-center justify-between px-5 py-4 bg-[var(--color-primary)] text-white border-b border-blue-900/30 shrink-0">
                 <Link to="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
                   <img
                     src={footerLogo}
@@ -504,26 +500,23 @@ export default function Navbar() {
 
               {/* Drawer footer */}
               <div className="px-4 py-4 border-t border-slate-100 space-y-2.5 shrink-0">
-                <div className="flex items-center justify-between mb-2">
-                  <LanguageSwitcher compact inline />
-                </div>
                 <Link
                   to="/join"
-                  className="flex items-center justify-center w-full py-2.5 rounded-full text-[14px] font-semibold bg-primary text-white shadow-[0_2px_12px_rgba(0,87,255,0.3)]"
+                  className="flex items-center justify-center w-full py-2.5 rounded-lg text-[14px] font-semibold bg-primary text-white shadow-[0_2px_12px_rgba(0,87,255,0.3)]"
                 >
                   Join the Party
                 </Link>
                 {!user ? (
                   <Link
                     to="/login"
-                    className="flex items-center justify-center w-full py-2.5 rounded-full text-[14px] font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="flex items-center justify-center w-full py-2.5 rounded-lg text-[14px] font-medium border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
                   >
                     Sign in
                   </Link>
                 ) : (
                   <button
                     onClick={handleSignOut}
-                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-full text-[14px] font-medium border border-red-100 text-red-500 hover:bg-red-50 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-[14px] font-medium border border-red-100 text-red-500 hover:bg-red-50 transition-colors"
                   >
                     <LogOut className="w-4 h-4" />
                     Sign out

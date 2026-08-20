@@ -48,13 +48,13 @@ export default function CursorFollower() {
     <>
       {/* Small dot */}
       <motion.div
-        className="fixed z-[9999] pointer-events-none w-2 h-2 rounded-full bg-primary mix-blend-difference"
+        className="fixed z-[9999] pointer-events-none -full bg-primary mix-blend-difference"
         style={{ left: pos.x - 4, top: pos.y - 4 }}
         transition={{ type: 'spring', stiffness: 1000, damping: 50 }}
       />
       {/* Large ring */}
       <motion.div
-        className="fixed z-[9998] pointer-events-none rounded-full border border-primary/30 mix-blend-difference transition-all duration-200"
+        className="fixed z-[9998] pointer-events-none rounded-lg border border-primary/30 mix-blend-difference transition-all duration-200"
         style={{
           left: trail.x - (isHovering ? 20 : 14),
           top: trail.y - (isHovering ? 20 : 14),

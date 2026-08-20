@@ -120,7 +120,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className, compact 
               exit={inline ? { height: 0, opacity: 0 } : { opacity: 0, y: upward ? -6 : 6, scale: 0.98 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
               className={cn(
-                inline ? "overflow-hidden mt-1 w-full" : "absolute right-0 w-48 sm:w-52 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden",
+                inline ? "overflow-hidden mt-1 w-full" : "absolute right-0 w-48 sm:w-52 bg-white/95 -xl rounded-xl shadow-[0_12px_36px_rgba(0,0,0,0.15)] border border-slate-200/80 z-50 overflow-hidden",
                 !inline && (upward ? "bottom-full mb-2" : "top-full mt-2")
               )}
             >
@@ -128,7 +128,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className, compact 
                 {/* Blue header accent strip */}
                 {!inline && (
                   <div className={cn(
-                    "h-0.5 w-full bg-[#0004A3] relative z-10",
+                    "h-0.5 w-full bg-[var(--color-primary)] relative z-10",
                     upward ? "order-last" : ""
                   )} />
                 )}
@@ -145,12 +145,12 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className, compact 
                           onClick={() => switchTo(lang.code)}
                           className={cn(
                             "group flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg transition-all duration-150 w-full text-left",
-                            isActive ? "bg-blue-50/90 text-[#0004A3]" : "hover:bg-blue-50/60 text-slate-700"
+                            isActive ? "bg-blue-50/90 text-[var(--color-primary)]" : "hover:bg-blue-50/60 text-slate-700"
                           )}
                         >
                           <div className={cn(
                             'w-6 h-6 rounded-md flex items-center justify-center shrink-0 transition-colors',
-                            isActive ? 'bg-[#0004A3] text-white' : 'bg-[#0004A3]/10 text-[#0004A3] group-hover:bg-[#0004A3] group-hover:text-white'
+                            isActive ? 'bg-[var(--color-primary)] text-white' : 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white'
                           )}>
                             <Icon className="w-3 h-3" />
                           </div>
@@ -165,7 +165,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className, compact 
                           </div>
 
                           {isActive && (
-                            <Check className="w-3.5 h-3.5 text-[#0004A3] shrink-0" />
+                            <Check className="w-3.5 h-3.5 text-[var(--color-primary)] shrink-0" />
                           )}
                         </button>
                       );

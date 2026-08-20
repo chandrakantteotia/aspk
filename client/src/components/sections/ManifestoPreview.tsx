@@ -14,10 +14,10 @@ const pillars = [
 
 export default function ManifestoPreview() {
   return (
-    <section className="py-20 md:py-28 bg-[#0004a3] relative overflow-hidden text-white" aria-labelledby="manifesto-heading">
+    <section className="py-20 md:py-28 bg-[var(--color-primary)] relative overflow-hidden text-white" aria-labelledby="manifesto-heading">
       
       {/* Animated Ambient Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0004a3] via-[#0006d4] to-[#000266] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[#0006d4] to-[#000266] pointer-events-none" />
       
       <motion.div
         animate={{
@@ -57,14 +57,14 @@ export default function ManifestoPreview() {
               transition={{ duration: 0.7 }}
             >
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15  border border-white/25 text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 shadow-md">
                 <Sparkles className="w-4 h-4 fill-amber-300 text-amber-300" />
                 <span>Manifesto 2026 • जन-संकल्प</span>
               </div>
 
               <h2
                 id="manifesto-heading"
-                className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] tracking-tight"
+                className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] tracking-tight"
               >
                 Our Vision for <br />
                 <span className="text-amber-300 underline underline-offset-8 decoration-amber-400/60 decoration-4">
@@ -73,7 +73,8 @@ export default function ManifestoPreview() {
               </h2>
 
               <p className="text-white/85 text-base sm:text-lg lg:text-xl leading-relaxed font-medium mb-8 max-w-xl">
-                Every promise is a commitment. Every pillar is a plan. Our manifesto is built on actionable policies that put people at the center of development and progress.
+                राष्ट्रीय राजधानी क्षेत्र (मैरिज) के क्षेत्रीय पहलुओं के अंतर्गत सेक्टरों का विस्तार, औद्योगिक विकास और बेहतर नागरिक असोसिएशन पर केंद्रित है।
+
               </p>
               
               <div className="flex flex-wrap items-center gap-4">
@@ -83,7 +84,7 @@ export default function ManifestoPreview() {
                 >
                   <Link
                     to="/manifesto"
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0004A3] font-extrabold rounded-none border-2 border-white hover:bg-[#0004A3] hover:text-white transition-all duration-300 text-base shadow-xl tracking-wide"
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[var(--color-primary)] font-extrabold rounded-lg border-2 border-white hover:bg-[var(--color-primary)] hover:text-white transition-all duration-300 text-base shadow-xl tracking-wide"
                   >
                     <span>Read Full Manifesto</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
@@ -103,22 +104,22 @@ export default function ManifestoPreview() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative p-6 rounded-2xl bg-[#0004a3] border-2 border-white hover:bg-white hover:border-white transition-all duration-300 backdrop-blur-md cursor-pointer shadow-lg hover:shadow-2xl overflow-hidden flex flex-col justify-between"
+                className="group relative p-6 rounded-xl bg-[var(--color-primary)] border-2 border-white hover:bg-white hover:border-white transition-all duration-300  cursor-pointer shadow-lg hover:shadow-lg overflow-hidden flex flex-col justify-between"
               >
                 {/* Glow Accent on Hover */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/10 rounded-full blur-2xl group-hover:bg-[#0004A3]/10 transition-colors pointer-events-none" />
+                <div className="absolute top-0 right-0 w-24 h-24 bg-amber-400/10 rounded-full blur-2xl group-hover:bg-[var(--color-primary)]/10 transition-colors pointer-events-none" />
 
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/15 group-hover:bg-[#0004A3] text-white group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-white/15 group-hover:bg-[var(--color-primary)] text-white group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-md shrink-0">
                       <pillar.icon className="w-6 h-6 group-hover:rotate-6 transition-transform duration-300" />
                     </div>
-                    <span className="text-2xl font-black font-display text-white/30 group-hover:text-[#0004A3]/25 transition-colors">
+                    <span className="text-2xl font-extrabold font-display text-white/30 group-hover:text-[var(--color-primary)]/25 transition-colors">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold font-display text-white group-hover:text-[#0004A3] transition-colors mb-2 leading-snug">
+                  <h3 className="text-lg font-bold font-display text-white group-hover:text-[var(--color-primary)] transition-colors mb-2 leading-snug">
                     {pillar.title}
                   </h3>
                   <p className="text-white/75 group-hover:text-slate-600 text-xs sm:text-sm leading-relaxed font-medium transition-colors">
@@ -126,7 +127,7 @@ export default function ManifestoPreview() {
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-white/10 group-hover:border-slate-200 flex items-center justify-between text-xs font-bold text-amber-300 group-hover:text-[#0004A3] transition-colors">
+                <div className="mt-4 pt-3 border-t border-white/10 group-hover:border-slate-200 flex items-center justify-between text-xs font-bold text-amber-300 group-hover:text-[var(--color-primary)] transition-colors">
                   <span>Explore Policy</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

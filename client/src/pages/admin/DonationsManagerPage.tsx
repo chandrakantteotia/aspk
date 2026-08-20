@@ -121,7 +121,7 @@ const DonationsManagerPage: React.FC = () => {
             color: 'bg-yellow-50 border-yellow-200 text-yellow-700',
           },
         ].map(({ label, value, icon: Icon, color }) => (
-          <div key={label} className={cn('p-5 rounded-2xl border flex items-center gap-4', color)}>
+          <div key={label} className={cn('p-5 rounded-xl border flex items-center gap-4', color)}>
             <div className="w-12 h-12 rounded-xl bg-white/60 flex items-center justify-center shrink-0">
               <Icon size={22} />
             </div>
@@ -134,7 +134,7 @@ const DonationsManagerPage: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-card border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           {loading ? (
             <div className="flex justify-center items-center h-52">
@@ -172,7 +172,7 @@ const DonationsManagerPage: React.FC = () => {
                       </td>
                       <td className="py-3.5 px-5 text-xs text-slate-400 whitespace-nowrap">{fmtDate(d.createdAt)}</td>
                       <td className="py-3.5 px-5">
-                        <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border', cfg.bg, cfg.color)}>
+                        <span className={cn('inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border', cfg.bg, cfg.color)}>
                           <StatusIcon size={11} />
                           {d.status}
                         </span>

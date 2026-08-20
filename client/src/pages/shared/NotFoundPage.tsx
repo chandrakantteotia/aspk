@@ -15,9 +15,9 @@ export default function NotFoundPage() {
       >
         {/* Abstract Graphic */}
         <div className="relative mb-8 flex justify-center">
-          <h1 className="text-[120px] font-display font-black text-slate-100 leading-none select-none tracking-tighter">404</h1>
+          <h1 className="text-[120px] font-display font-extrabold text-slate-100 leading-none select-none tracking-tighter">404</h1>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white/80 backdrop-blur-md px-6 py-2.5 rounded-2xl shadow-sm border border-slate-100">
+            <div className="bg-white/80  px-6 py-2.5 rounded-xl shadow-sm border border-slate-100">
               <span className="text-xl font-bold text-slate-800">Page Not Found</span>
             </div>
           </div>

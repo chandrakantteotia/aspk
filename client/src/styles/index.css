@@ -7,20 +7,20 @@
 
 @theme {
   /* ─── Colors ─── */
-  --color-primary: #0057FF;
+  --color-primary: #0057FF; /* Kept as refined brand color */
   --color-primary-dark: #0040CC;
   --color-primary-light: #3377FF;
   --color-accent: #00D4FF;
   --color-accent-dark: #00A8CC;
-  --color-background: #F8FAFC;
-  --color-dark: #0F172A;
+  --color-background: #F8F9FA; /* User specified off-white */
+  --color-dark: #111111; /* User specified primary text */
   --color-dark-800: #1E293B;
   --color-dark-700: #334155;
-  --color-ink: #1a1a2e;
-  --color-muted: #64748B;
-  --color-muted-light: #94A3B8;
-  --color-border: #E2E8F0;
-  --color-surface: #FFFFFF;
+  --color-ink: #111111;
+  --color-muted: #666666; /* User specified secondary text */
+  --color-muted-light: #9CA3AF;
+  --color-border: #E5E7EB; /* User specified border */
+  --color-surface: #FFFFFF; /* User specified cards */
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
@@ -29,15 +29,15 @@
 
   /* ─── Fonts ─── */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
 
   /* ─── Custom Shadows ─── */
-  --shadow-premium: 0 20px 60px rgba(15, 23, 42, 0.10), 0 4px 16px rgba(15, 23, 42, 0.06);
-  --shadow-glow: 0 0 0 1px rgba(0, 87, 255, 0.12), 0 24px 80px rgba(0, 87, 255, 0.20);
-  --shadow-card: 0 4px 24px rgba(15, 23, 42, 0.06), 0 1px 4px rgba(15, 23, 42, 0.04);
-  --shadow-nav: 0 1px 0 rgba(226, 232, 240, 0.8), 0 4px 24px rgba(15, 23, 42, 0.06);
-  --shadow-button: 0 4px 14px rgba(0, 87, 255, 0.35);
+  --shadow-premium: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Subtler */
+  --shadow-glow: 0 0 0 1px rgba(0, 87, 255, 0.1), 0 10px 15px -3px rgba(0, 87, 255, 0.1); /* Subtler */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05); /* Subtler */
+  --shadow-nav: 0 1px 2px 0 rgba(0, 0, 0, 0.02); /* Subtler */
+  --shadow-button: 0 2px 4px rgba(0, 87, 255, 0.15); /* Subtler */
 
   /* ─── Border Radius ─── */
   --radius-pill: 9999px;
@@ -216,6 +216,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+}
+
+h1 {
+  font-weight: 800; /* extra-bold */
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 700; /* bold */
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-weight: 600; /* semi-bold */
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+p {
+  margin-bottom: 1rem;
 }
 
 ::selection {

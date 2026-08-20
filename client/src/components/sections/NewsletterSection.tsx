@@ -39,7 +39,7 @@ export default function NewsletterSection() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-primary mb-8 shadow-sm">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-blue-100 text-primary mb-8 shadow-sm">
             <Mail className="w-8 h-8" />
           </div>
           
@@ -56,7 +56,7 @@ export default function NewsletterSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex flex-col items-center gap-3 p-8 rounded-2xl bg-white shadow-sm border border-success/20 w-full max-w-md mx-auto"
+              className="inline-flex flex-col items-center gap-3 p-8 rounded-xl bg-white shadow-sm border border-success/20 w-full max-w-md mx-auto"
             >
               <CheckCircle className="w-12 h-12 text-success" />
               <span className="text-xl font-bold text-dark">You're subscribed!</span>
@@ -78,10 +78,10 @@ export default function NewsletterSection() {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-primary text-white text-lg font-bold hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 transition-all disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-primary text-white text-lg font-bold hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 transition-all disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap w-full sm:w-auto"
               >
                 {loading ? (
-                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-lg animate-spin" />
                 ) : (
                   <>Subscribe <ArrowRight className="w-5 h-5" /></>
                 )}

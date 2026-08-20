@@ -50,8 +50,8 @@ const RegisterPage: React.FC = () => {
     <div className="min-h-screen flex">
       <div className="hidden lg:flex w-1/2 bg-dark text-white p-12 flex-col justify-between relative overflow-hidden">
         {/* Same layout as Login for consistency */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-lg blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/20 rounded-lg blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
         
         <div className="relative z-10">
           <h1 className="text-4xl font-display font-bold text-primary mb-2">ASPK4Hapur</h1>
@@ -60,7 +60,7 @@ const RegisterPage: React.FC = () => {
       </div>
 
       <div className="flex-1 flex items-center justify-center p-8 bg-slate-50">
-        <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-card">
+        <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-card">
           <h2 className="text-3xl font-bold mb-2 font-display text-slate-800">Create Account</h2>
           <p className="text-slate-500 mb-8">Sign up to get involved with ASPK4Hapur.</p>
 

@@ -17,7 +17,7 @@ const AuthLoader: React.FC = () => (
       animate={{ rotate: 360 }}
       transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
     >
-      <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center">
+      <div className="w-16 h-16 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
         <Shield className="w-8 h-8 text-primary" />
       </div>
     </motion.div>
@@ -72,7 +72,7 @@ const AdminLayout: React.FC = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 z-40 lg:hidden "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -124,7 +124,7 @@ const AdminLayout: React.FC = () => {
         </main>
 
         {/* Subtle footer bar */}
-        <div className="h-8 shrink-0 border-t border-slate-100 bg-white/60 backdrop-blur-sm flex items-center px-6 gap-4">
+        <div className="h-8 shrink-0 border-t border-slate-100 bg-white/60  flex items-center px-6 gap-4">
           <span className="text-[10px] text-slate-400">ASPK4Hapur Admin</span>
           <span className="text-[10px] text-slate-300">•</span>
           <span className="text-[10px] text-slate-400">v2.0.0</span>

@@ -14,7 +14,7 @@ export default function WhatsAppButton() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 2 }}
-      className="fixed bottom-7 right-5 z-40 w-13 h-13 rounded-2xl bg-[#25D366] text-white shadow-premium flex items-center justify-center hover:-translate-y-1 hover:scale-105 transition-all"
+      className="fixed bottom-7 right-5 z-40 w-13 h-13 rounded-xl bg-[#25D366] text-white shadow-premium flex items-center justify-center hover:-translate-y-1 hover:scale-105 transition-all"
       aria-label="Contact on WhatsApp"
     >
       <motion.div
@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
         <MessageCircle className="w-6 h-6 fill-current" />
       </motion.div>
       {/* Ping ring */}
-      <span className="absolute inset-0 rounded-2xl bg-[#25D366] animate-ping opacity-30" />
+      <span className="absolute inset-0 rounded-xl bg-[#25D366] animate-ping opacity-30" />
     </motion.a>
   );
 }

@@ -38,9 +38,9 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[var(--color-gold-light)] to-[var(--color-gold)] flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.2)] mb-6"
+          className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-[var(--color-gold-light)] to-[var(--color-gold)] flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.2)] mb-6"
         >
-          <span className="text-slate-900 text-xl sm:text-2xl font-black font-display tracking-tight">
+          <span className="text-slate-900 text-xl sm:text-2xl font-extrabold font-display tracking-tight">
             A4
           </span>
         </motion.div>

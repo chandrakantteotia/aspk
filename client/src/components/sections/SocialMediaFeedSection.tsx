@@ -4,10 +4,10 @@ import { ThumbsUp, MessageSquare, Share2, Play, CheckCircle2 } from 'lucide-reac
 import partyLogo from '@/images/logo.png';
 
 // Local project images
-import gallery1 from '@/images/gallery-1.jpg';
-import gallery2 from '@/images/gallery-2.jpg';
-import gallery3 from '@/images/gallery-3.jpg';
-import gallery4 from '@/images/gallery-4.jpg';
+import gallery1 from '@/images/gallery-1.jpeg';
+import gallery2 from '@/images/gallery-2.jpeg';
+import gallery3 from '@/images/gallery-3.jpeg';
+import gallery4 from '@/images/gallery-4.jpeg';
 import heroJoin from '@/images/herojoin.png';
 
 // Sample Facebook Posts
@@ -152,7 +152,7 @@ export default function SocialMediaFeedSection() {
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             Follow Us On Social Media
           </h2>
-          <div className="w-16 h-1 bg-[#0004A3] mx-auto mt-3 rounded-full" />
+          <div className="w-16 h-1 bg-[var(--color-primary)] mx-auto mt-3 rounded-lg" />
         </div>
 
         {/* 3 Column Social Feeds Grid */}
@@ -164,12 +164,12 @@ export default function SocialMediaFeedSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
+            className="bg-white rounded-xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-100 shrink-0 mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
+                <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
                   <img src={partyLogo} alt="Facebook Profile" className="w-full h-full object-cover" />
                 </div>
                 <div>
@@ -187,7 +187,7 @@ export default function SocialMediaFeedSection() {
             {/* Action Buttons */}
             <div className="flex items-center gap-2 mb-3 shrink-0">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/vkshirish"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-[#1877F2] hover:bg-blue-700 text-white text-xs font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors"
@@ -206,12 +206,12 @@ export default function SocialMediaFeedSection() {
             {/* Scrollable Facebook Posts Feed with Wheel Forwarding */}
             <div
               onWheel={handleFeedWheel}
-              className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1.5 scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#0004A3]"
+              className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1.5 scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-lg hover:[&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)]"
             >
               {FB_POSTS.map(post => (
-                <div key={post.id} className="bg-slate-50/80 rounded-xl p-3 border border-slate-100 hover:border-slate-200 transition-colors">
+                <a key={post.id} href="https://www.facebook.com/vkshirish" target="_blank" rel="noopener noreferrer" className="block bg-slate-50/80 rounded-xl p-3 border border-slate-100 hover:border-slate-200 transition-colors">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
+                    <div className="w-7 h-7 rounded-lg overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
                       <img src={partyLogo} alt="Party Logo" className="w-full h-full object-cover" />
                     </div>
                     <div>
@@ -230,7 +230,7 @@ export default function SocialMediaFeedSection() {
                       <span className="flex items-center gap-1"><Share2 className="w-3 h-3 text-slate-400" /> {post.shares}</span>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
@@ -242,11 +242,11 @@ export default function SocialMediaFeedSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
+            className="bg-white rounded-xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
           >
             {/* Profile Header */}
             <div className="flex items-start gap-3 pb-3 border-b border-slate-100 shrink-0">
-              <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
+              <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
                 <img src={partyLogo} alt="X Profile" className="w-full h-full object-cover" />
               </div>
               <div className="min-w-0">
@@ -269,7 +269,7 @@ export default function SocialMediaFeedSection() {
 
             {/* X Follow Button */}
             <a
-              href="https://x.com/AzadSamajParty"
+              href="https://x.com/VKShirish?s=20"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#0F1419] hover:bg-black text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-colors mb-3 shadow-sm shrink-0"
@@ -280,13 +280,13 @@ export default function SocialMediaFeedSection() {
             {/* Scrollable Tweets List with Wheel Forwarding */}
             <div
               onWheel={handleFeedWheel}
-              className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1.5 scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#0004A3]"
+              className="flex-1 min-h-0 overflow-y-auto space-y-3 pr-1.5 scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-lg hover:[&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)]"
             >
               {TWEETS.map(tweet => (
-                <div key={tweet.id} className="bg-slate-50 rounded-xl p-3.5 border border-slate-100 hover:border-slate-200 transition-colors">
+                <a key={tweet.id} href="https://x.com/VKShirish?s=20" target="_blank" rel="noopener noreferrer" className="block bg-slate-50 rounded-xl p-3.5 border border-slate-100 hover:border-slate-200 transition-colors">
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
+                      <div className="w-5 h-5 rounded-lg overflow-hidden shrink-0 aspect-square border border-slate-200 bg-white">
                         <img src={partyLogo} alt="X Logo" className="w-full h-full object-cover" />
                       </div>
                       <div>
@@ -304,7 +304,7 @@ export default function SocialMediaFeedSection() {
                     <span>🔁 {tweet.retweets} Retweets</span>
                     <span>❤️ {tweet.likes} Likes</span>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
@@ -316,13 +316,13 @@ export default function SocialMediaFeedSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
+            className="bg-white rounded-xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-slate-200/80 flex flex-col h-[540px] overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-start justify-between pb-3 border-b border-slate-100 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 shrink-0 aspect-square overflow-hidden">
-                  <img src={partyLogo} alt="Instagram Profile" className="w-full h-full rounded-full object-cover bg-white" />
+                <div className="w-12 h-12 rounded-lg p-0.5  shrink-0 aspect-square overflow-hidden">
+                  <img src={partyLogo} alt="Instagram Profile" className="w-full h-full rounded-lg object-cover bg-white" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1">
@@ -335,7 +335,7 @@ export default function SocialMediaFeedSection() {
               </div>
 
               {/* Instagram Icon */}
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/virendra.shirish_aspk?igsi=MTl6d3J4eTB0MTVjaQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg className="w-6 h-6 text-pink-600 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
@@ -345,12 +345,12 @@ export default function SocialMediaFeedSection() {
             {/* Scrollable Grid of Instagram Posts with Wheel Forwarding */}
             <div
               onWheel={handleFeedWheel}
-              className="grid grid-cols-2 gap-2 my-3 flex-1 min-h-0 overflow-y-auto scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-[#0004A3] pr-1.5"
+              className="grid grid-cols-2 gap-2 my-3 flex-1 min-h-0 overflow-y-auto scroll-smooth touch-pan-y [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-lg [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-lg hover:[&::-webkit-scrollbar-thumb]:bg-[var(--color-primary)] pr-1.5"
             >
               {INSTA_POSTS.map((item, i) => (
                 <a
                   key={i}
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/virendra.shirish_aspk?igsi=MTl6d3J4eTB0MTVjaQ=="
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative aspect-square rounded-xl overflow-hidden group border border-slate-100 shadow-sm block"
@@ -362,7 +362,7 @@ export default function SocialMediaFeedSection() {
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
                   {item.type === 'video' && (
-                    <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center">
+                    <div className="absolute top-2 right-2 w-5 h-5 rounded-lg bg-black/60  flex items-center justify-center">
                       <Play className="w-2.5 h-2.5 text-white fill-white ml-0.5" />
                     </div>
                   )}
@@ -372,10 +372,10 @@ export default function SocialMediaFeedSection() {
 
             {/* Follow Instagram Button */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/virendra.shirish_aspk?igsi=MTl6d3J4eTB0MTVjaQ=="
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-opacity hover:opacity-95 shadow-sm shrink-0"
+              className="w-full  text-white text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-opacity hover:opacity-95 shadow-sm shrink-0"
             >
               <span>Follow on Instagram</span>
             </a>

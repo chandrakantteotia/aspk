@@ -48,14 +48,14 @@ const FAQPage: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto mt-10 relative"
           >
-            <div className="relative flex items-center shadow-card rounded-2xl bg-white border border-slate-100 group focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
+            <div className="relative flex items-center shadow-card rounded-xl bg-white border border-slate-100 group focus-within:ring-2 focus-within:ring-primary focus-within:border-primary transition-all">
               <Search className="absolute left-6 w-6 h-6 text-slate-400 group-focus-within:text-primary transition-colors" strokeWidth={2} />
               <input 
                 type="text" 
                 placeholder="Search for questions..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-16 pr-6 py-5 rounded-2xl border-none text-lg outline-none bg-transparent text-dark placeholder:text-slate-400"
+                className="w-full pl-16 pr-6 py-5 rounded-xl border-none text-lg outline-none bg-transparent text-dark placeholder:text-slate-400"
               />
             </div>
           </motion.div>
@@ -71,7 +71,7 @@ const FAQPage: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 activeTab === cat 
                   ? 'bg-dark text-white shadow-button' 
                   : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'
@@ -101,12 +101,12 @@ const FAQPage: React.FC = () => {
                   >
                     <Accordion.Item 
                       value={faq.id}
-                      className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden"
+                      className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden"
                     >
                       <Accordion.Header>
                         <Accordion.Trigger className="w-full flex items-center justify-between p-6 hover:bg-slate-50 transition-colors group text-left">
                           <span className="font-display font-bold text-dark text-xl group-hover:text-primary transition-colors">{faq.q}</span>
-                          <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary/10 transition-colors flex-shrink-0 ml-4">
+                          <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-primary/10 transition-colors flex-shrink-0 ml-4">
                             <ChevronDown className="w-5 h-5 text-slate-500 group-hover:text-primary group-data-[state=open]:rotate-180 transition-transform duration-300" strokeWidth={2} />
                           </div>
                         </Accordion.Trigger>
@@ -129,11 +129,11 @@ const FAQPage: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mt-24 bg-white border border-slate-200 rounded-[2rem] p-12 text-center relative overflow-hidden shadow-card"
+          className="max-w-4xl mx-auto mt-24 bg-white border border-slate-200 rounded-xl p-12 text-center relative overflow-hidden shadow-card"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-lg blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="relative z-10 flex flex-col items-center">
-            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-8">
+            <div className="w-20 h-20 bg-primary/10 rounded-lg flex items-center justify-center mb-8">
               <MessageCircle className="w-10 h-10 text-primary" strokeWidth={1.5} />
             </div>
             <h3 className="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Still have questions?</h3>
